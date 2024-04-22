@@ -30,9 +30,13 @@ cd integrador_ISP4/PassKeeperWeb/backend/PassKeeperAPI
 virtualenv venv
 ```
 Windows:
+```bash
     venv\Scripts\activate  
+```
 linux:
+```bash
     source venv/bin/activate
+```
 
 3 -Instala las dependencias del proyecto:
 ```bash
