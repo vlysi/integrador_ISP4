@@ -62,3 +62,6 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
+
+class isPremiumSerializer(serializers.Serializer):
+    email=serializers.EmailField()

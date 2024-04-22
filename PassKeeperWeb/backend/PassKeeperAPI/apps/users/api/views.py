@@ -19,7 +19,7 @@ from apps.users.models import User
 from apps.users.api.serializers import (
     UserSerializer,  LoginSerializer,
     PasswordSerializer, RegisterUserSerializer,
-    LogoutSerializer
+    LogoutSerializer,isPremiumSerializer
 )
 
 
@@ -67,8 +67,23 @@ class LoginAPI(generics.GenericAPIView):
         else:
             return Response({"message": "Usuario o Contraseña incorrecto"}, status=status.HTTP_400_BAD_REQUEST)
 
-    
+class IsPremium(generics.GenericAPIView):
+    serializer_class = isPremiumSerializer
 
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            try:
+                user = User.objects.get(email=email)
+                # Devuelve el estado is_premium del usuario
+                return Response({'is_premium': user.is_premium},status=status.HTTP_200_OK)
+            except User.DoesNotExist:
+                # Si el usuario no existe, devuelve False
+                return Response({'is_premium': False},status=status.HTTP_200_OK)
+        else:
+            # Si los datos no son válidos, devuelve un error 400 con los errores del serializador
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutAPI(generics.GenericAPIView):
     serializer_class = LogoutSerializer
