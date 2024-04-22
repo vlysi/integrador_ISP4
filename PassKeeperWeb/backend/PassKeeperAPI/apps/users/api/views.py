@@ -41,8 +41,8 @@ class LoggedUserViewSet(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixi
             user.save()
             return Response({'message': 'Contraseña actualizada correctamente'})
 
-        return Response({'message': 'Hay errores en la información enviada', 'errors': password_serializer.errors},
-                        status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'Hay errores en la información enviada', 'errors': password_serializer.errors
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginAPI(generics.GenericAPIView):
@@ -56,13 +56,15 @@ class LoginAPI(generics.GenericAPIView):
             user.save()
             refresh = RefreshToken.for_user(user)
             return Response({
-                "user": UserSerializer(user, context=self.get_serializer_context()).data,
-                "refresh": str(refresh),
-                "access": str(refresh.access_token),
-                "message": "Usuario logueado con éxito"
-            }, status=status.HTTP_200_OK)
+                'user': UserSerializer(user, context=self.get_serializer_context()).data,
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'message': 'Usuario logueado con éxito'
+                }, status=status.HTTP_200_OK)
         else:
-            return Response({"message": "Usuario o Contraseña incorrecto"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'message': 'Usuario o Contraseña incorrecto'
+                }, status=status.HTTP_400_BAD_REQUEST)
 
 class IsPremium(generics.GenericAPIView):
     serializer_class = isPremiumSerializer
@@ -76,15 +78,25 @@ class IsPremium(generics.GenericAPIView):
                 try:
                     user = User.objects.get(email=email)
                     # Devuelve el estado is_premium del usuario
-                    return Response({'is_premium': user.is_premium},status=status.HTTP_200_OK)
+                    return Response({
+                        'is_premium': user.is_premium,
+                        'message': 'Verificación realizada'
+                        },status=status.HTTP_200_OK)
                 except User.DoesNotExist:
                     # Si el usuario no existe, devuelve False
-                    return Response({'is_premium': False},status=status.HTTP_200_OK)
+                    return Response({
+                        'is_premium': False,
+                        'message': 'El usuario no existe'
+                        },status=status.HTTP_200_OK)
             else:
-                return Response({'message': 'key incorrecta'},status=status.HTTP_403_FORBIDDEN)
+                return Response({
+                    'message': 'Acceso denegado'
+                    },status=status.HTTP_403_FORBIDDEN)
         else:
             # Si los datos no son válidos, devuelve un error 400 con los errores del serializador
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'message': 'Introduzca una dirección de correo electrónico válida'
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutAPI(generics.GenericAPIView):
     serializer_class = LogoutSerializer
@@ -98,15 +110,21 @@ class LogoutAPI(generics.GenericAPIView):
             refresh_token = serializer.validated_data.get("refresh")
 
             if not refresh_token:
-                return Response({"message": "No se proporcionó token de actualización"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({
+                    'message': 'No se proporcionó token de actualización'
+                    }, status=status.HTTP_400_BAD_REQUEST)
 
             token = RefreshToken(refresh_token)
             token.blacklist()
-            return Response({"message": "Sesión cerrada con éxito"}, status=status.HTTP_200_OK)
+            return Response({
+                'message': 'Sesión cerrada con éxito'
+                }, status=status.HTTP_200_OK)
 
         except Exception as e:
             print(e)
-            return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({
+                'message': str(e)
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class RegisterAPI(generics.GenericAPIView):
@@ -116,7 +134,9 @@ class RegisterAPI(generics.GenericAPIView):
         email = request.data.get('email')
        # Verificar si ya existe un usuario con ese email
         if User.objects.filter(email=email).exists():
-            return Response({"message": "Ya existe un usuario con ese email."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'message': 'Ya existe un usuario con ese email'
+                }, status=status.HTTP_400_BAD_REQUEST)
         # Procesar la creación del usuario
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
@@ -124,14 +144,15 @@ class RegisterAPI(generics.GenericAPIView):
             refresh = RefreshToken.for_user(user)
 
             return Response({
-                "user": UserSerializer(user, context=self.get_serializer_context()).data,
-                "refresh": str(refresh),
-                "access": str(refresh.access_token),
-                "message": "Usuario creado con éxito"
+                'user': UserSerializer(user, context=self.get_serializer_context()).data,
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'message': 'Usuario creado con éxito'
             }, status=status.HTTP_201_CREATED)
         else:
             print(serializer.errors)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, 
+                status=status.HTTP_400_BAD_REQUEST)
 
     
 
@@ -158,6 +179,10 @@ def request_password_reset(request):
             [user.email],
             fail_silently=False,
         )
-        return Response({'message': 'Se ha enviado un email para restablecer tu contraseña.'})
+        return Response({
+            'message': 'Se ha enviado un email para restablecer tu contraseña.'
+            }, status=status.HTTP_200_OK)
 
-    return Response({'message': 'No se encontró un usuario con ese email.'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({
+        'message': 'No se encontró un usuario con ese email.'
+        }, status=status.HTTP_400_BAD_REQUEST)
