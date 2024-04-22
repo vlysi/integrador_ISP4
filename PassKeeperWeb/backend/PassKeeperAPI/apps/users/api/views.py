@@ -4,23 +4,20 @@ import secrets
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
-
 from rest_framework import viewsets, permissions, status, generics, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from apps.users.models import User
-
 from apps.users.api.serializers import (
     UserSerializer,  LoginSerializer,
     PasswordSerializer, RegisterUserSerializer,
     LogoutSerializer,isPremiumSerializer
 )
+from core import settings
 
 
 
@@ -73,14 +70,18 @@ class IsPremium(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
+            key=serializer.validated_data['key']
             email = serializer.validated_data['email']
-            try:
-                user = User.objects.get(email=email)
-                # Devuelve el estado is_premium del usuario
-                return Response({'is_premium': user.is_premium},status=status.HTTP_200_OK)
-            except User.DoesNotExist:
-                # Si el usuario no existe, devuelve False
-                return Response({'is_premium': False},status=status.HTTP_200_OK)
+            if key== settings.ANDROID_KEY:
+                try:
+                    user = User.objects.get(email=email)
+                    # Devuelve el estado is_premium del usuario
+                    return Response({'is_premium': user.is_premium},status=status.HTTP_200_OK)
+                except User.DoesNotExist:
+                    # Si el usuario no existe, devuelve False
+                    return Response({'is_premium': False},status=status.HTTP_200_OK)
+            else:
+                return Response({'message': 'key incorrecta'},status=status.HTTP_403_FORBIDDEN)
         else:
             # Si los datos no son válidos, devuelve un error 400 con los errores del serializador
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

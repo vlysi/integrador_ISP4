@@ -65,3 +65,4 @@ class LogoutSerializer(serializers.Serializer):
 
 class isPremiumSerializer(serializers.Serializer):
     email=serializers.EmailField()
+    key=serializers.CharField()

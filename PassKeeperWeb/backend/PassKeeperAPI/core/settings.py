@@ -12,19 +12,36 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-
+import environ
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# initialize environment variables
+
+env = environ.Env()
+
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6tob15!c&he7-%w&9p!q&sra6_l8fxsnnjem(%3@3l31xkj3ls'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+if DEBUG:
+    SECRET_KEY = 'django-insecure-6tob15!c&he7-%w&9p!q&sra6_l8fxsnnjem(%3@3l31xkj3ls'
+    ANDROID_KEY= 'test_key'
+else:
+    SECRET_KEY = env('SECRET_KEY')
+    ANDROID_KEY= env('ANDROID_KEY')
+
 
 ALLOWED_HOSTS = []
 CORS_ALLOWED_ORIGINS = [
