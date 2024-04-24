@@ -1,27 +1,47 @@
-# PassKeeper
+# PassKeeper - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+Este proyecto es el frontend de PassKeeper, una aplicación web que permite a los usuarios comprar una aplicación Android. Este proyecto está desarrollado con Angular.
 
-## Development server
+## Requisitos previos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Antes de comenzar, asegúrate de tener instalado Node.js y npm en tu sistema. Estos son necesarios para ejecutar el proyecto Angular.
 
-## Code scaffolding
+- Node.js
+- npm
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Puedes verificar que estén instalados ejecutando `node -v` y `npm -v` en la línea de comandos.
+```bash
+node -v
+```
+```bash
+npm -v
+```
 
-## Build
+## Clonar el repositorio
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para obtener el proyecto, clona el repositorio a tu máquina local usando el siguiente comando en la terminal:
+```bash
+git clone https://github.com/RocketInnovate/integrador_ISP4.git
+```
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Instalar dependencias
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Navega a la carpeta del proyecto y ejecuta el siguiente comando para instalar todas las dependencias necesarias:
+```bash
+cd frontend/PassKeeper
+```
+```bash
+npm install
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Esto instalará todas las dependencias definidas en el archivo `package.json`.
+
+## Ejecutar el servidor de desarrollo
+
+Una vez instaladas las dependencias, puedes iniciar el servidor de desarrollo con:
+```bash
+ng serve
+```
