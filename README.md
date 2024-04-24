@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HVMHVPWDEMA6SC410W7VX2EA
-  version: v3
----
-
 <h1 align="center">PassKeeper</h1>
 
 <p align="center">
