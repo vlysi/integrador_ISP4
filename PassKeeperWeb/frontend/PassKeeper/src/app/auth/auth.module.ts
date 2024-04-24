@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SinginComponent } from './singin/singin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,9 +18,5 @@ import { SinginComponent } from './singin/singin.component';
     ReactiveFormsModule,
     AuthRoutingModule,
   ],
-  exports: [
-    LoginComponent,
-    SinginComponent
-  ]
 })
 export class AuthModule { }

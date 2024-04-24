@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginCredentials, LoginResponse } from '../auth.models';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email:['', Validators.required,Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, ]]
     });
   }
@@ -38,7 +39,7 @@ export class LoginComponent {
             localStorage.setItem('access_token', response.access);
             localStorage.setItem('refresh_token', response.refresh);
             console.log('Login successful');
-            this.router.navigate([''])
+            //this.router.navigate([''])
           } else {
             // Maneja el caso donde no hay tokens en la respuesta.
             console.error('Invalid credentials', response);
@@ -52,13 +53,32 @@ export class LoginComponent {
           }
           console.error(errorMessage);
           // Aquí podrías mostrar el mensaje de error en la interfaz de usuario
+          
         }
     });
     }
         
       
 
+  }
+
+  // Función para obtener el estado de error de un campo específico
+  fieldError(field: string): boolean {
+    const formField = this.loginForm.get(field);
+    return formField !== null && formField.invalid && (formField.dirty || formField.touched);
+  }
+
+  // Mensaje de error específico por campo. (Aqui agregar else if para mas validaciones)
+  getErrorMessage(field: string): string {
+    const formField = this.loginForm.get(field);
+    if (formField?.hasError('required')) {
+      return 'Este campo es obligatorio';
+    } else if (formField?.hasError('email')) {
+      return 'Ingrese un email válido';
     }
+    return '';
+  }
+
 }  
   
 
