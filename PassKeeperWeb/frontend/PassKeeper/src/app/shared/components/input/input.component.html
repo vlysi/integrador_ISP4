@@ -1,0 +1,14 @@
+<div class="mb-3">
+    <label [for]="controlName" class="form-label">{{ label }}</label>
+    <input [type]="type"
+           [id]="controlName"
+           [placeholder]="placeholder"
+           class="form-control"
+           [formControl]="control"
+           [ngClass]="{'is-invalid': control.touched && control.invalid}">
+    <div *ngIf="control.touched && control.invalid" class="invalid-feedback">
+      <span *ngIf="control.errors">
+        {{ errorMessages[getFirstValidationError(control.errors)] }}
+      </span>
+    </div>
+</div>
