@@ -20,3 +20,8 @@ export interface LoginResponse{
     message:string;
 
 }
+
+export interface JwtTokens{
+    access:string;
+    refresh:string;
+}

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginCredentials, LoginResponse } from '../auth.models';
 import { AuthService } from '../auth.service';
+import { StoreService } from '../store.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private storeService: StoreService
   ) { }
 
   ngOnInit(): void {
@@ -35,11 +37,12 @@ export class LoginComponent {
       this.authService.logIn(credentials).subscribe({
         next:(response: LoginResponse) => {
           if (response.access && response.refresh && response.user) {
-            localStorage.setItem('user', JSON.stringify(response.user));
-            localStorage.setItem('access_token', response.access);
-            localStorage.setItem('refresh_token', response.refresh);
+            this.storeService.setUser(response.user)
+            this.storeService.setAccessToken(response.access)
+            this.storeService.setRefreshToken(response.refresh)
+            this.authService.setIsLogged(true)
             console.log('Login successful');
-            //this.router.navigate([''])
+            this.router.navigate(['/'])
           } else {
             // Maneja el caso donde no hay tokens en la respuesta.
             console.error('Invalid credentials', response);

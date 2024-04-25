@@ -10,12 +10,12 @@ app-dashboard {
     min-height: 70vh; 
     width: 18%;
     padding: 10px;
-    margin-bottom: 5px;
+    border: 1px solid #000000;
 }
 
 app-body {
     width: 82%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid #000000;
 }
 
 @media screen and (max-width: 1024px) {
