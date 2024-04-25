@@ -1,2 +1,33 @@
-<h1>navbar</h1>
-<a class="" routerLink="auth/login">Login</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="#">PassKeeper</a>
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Seguridad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="home">Passkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="auth/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
