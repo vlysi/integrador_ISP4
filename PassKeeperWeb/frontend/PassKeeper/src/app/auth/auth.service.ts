@@ -26,6 +26,7 @@ export class AuthService {
 
   logOut(){
     this.storeService.clearLocalStorage()
+    this.islogged.next(false);
   }
   
   refreshToken(): Observable<HttpResponse<JwtTokens>> {
