@@ -40,7 +40,12 @@ La aplicación móvil PassKeeper se desarrolló utilizando las siguientes tecnol
 
 La aplicacion Web se desarrolló con las tecnologías:
 
-TODO: Completar
+Stack DAM (Django-Angular-MySQL)
+- Python 
+- Django 
+- Django REST Framework
+- Angular
+- MySQL
 
 Además, hemos implementado técnicas criptográficas para generar "salt," hashear contraseñas, cifrar y descifrar datos, y generar contraseñas seguras. Estas medidas son esenciales en aplicaciones que manejan información sensible, como contraseñas y datos privados. También hemos incorporado la opción de inicio de sesión mediante biometría de huella digital en dispositivos que admiten esta funcionalidad.
 
