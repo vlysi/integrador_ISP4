@@ -13,4 +13,7 @@ export class NavbarComponent {
       this.isLogged = logged;
     });
   }
+  logOut(){
+    this.authService.logOut()
+  }
 }
