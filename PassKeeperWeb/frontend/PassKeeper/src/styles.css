@@ -13,12 +13,7 @@
     border-color: var(--primary-color);
 }
 
-.btn-outline-primary{
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    
-    
-}
+
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
   color: #fff; 
