@@ -132,7 +132,7 @@ class RegisterAPI(generics.GenericAPIView):
 
     def post(self, request):
         email = request.data.get('email')
-        # Verificar si ya existe un usuario con ese email
+       # Verificar si ya existe un usuario con ese email
         if User.objects.filter(email=email).exists():
             return Response({
                 'message': 'Ya existe un usuario con ese email'
@@ -154,6 +154,7 @@ class RegisterAPI(generics.GenericAPIView):
             return Response(serializer.errors, 
                 status=status.HTTP_400_BAD_REQUEST)
 
+    
 
 
 @api_view(['POST'])
@@ -165,7 +166,7 @@ def request_password_reset(request):
 
     if user:
         token = default_token_generator.make_token(user)
-        uid = urlsafe_base64_encode(force_bytes(user.pk)) # type: ignore
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
         password = ''.join(secrets.choice(
             string.ascii_letters + string.digits) for i in range(10))
         user.set_password(password)
