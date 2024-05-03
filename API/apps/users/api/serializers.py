@@ -14,6 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'email','is_premium', 'is_staff')
 
 
+
+
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(max_length=128, write_only=True)
     new_password = serializers.CharField(max_length=128, min_length=6, write_only=True)
@@ -27,6 +29,7 @@ class PasswordSerializer(serializers.Serializer):
     def validate(self, data):
         # Puedes agregar aquí cualquier validación adicional que necesites
         return data
+
 
 
 class LoginSerializer(serializers.Serializer):
