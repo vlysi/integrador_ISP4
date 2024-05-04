@@ -22,7 +22,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField('Correo Electrónico',max_length=255, unique=True,)
+    email = models.EmailField('Correo Electrónico',max_length=255, unique=True,error_messages={'unique': "El correo electrónico ingresado ya está en uso."})
     is_premium = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
