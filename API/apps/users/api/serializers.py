@@ -14,8 +14,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'email','is_premium', 'is_staff')
 
 
-
-
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(max_length=128, write_only=True)
     new_password = serializers.CharField(max_length=128, min_length=6, write_only=True)
@@ -30,18 +28,31 @@ class PasswordSerializer(serializers.Serializer):
         # Puedes agregar aquí cualquier validación adicional que necesites
         return data
 
-
-
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
 
+    def validate_email(self, value):
+        """
+        Validar el formato y si exisate el email.
+        """
+        # Verificar si el email existe 
+        if not User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("El email no está registrado")
+        return value
+
     def validate(self, data):
-        user = authenticate(username=data.get(
-            'email'), password=data.get('password'))
-        if user :
-            return user
-        raise serializers.ValidationError("Usuario o contraseña incorrecto")
+        """
+        Autenticar, si falla es por la contraseña.
+        """
+        # Obtener el email del contexto
+        email = data.get('email')
+        # Autenticar al usuario usando el email y la contraseña
+        user = authenticate(username=email, password=data.get('password'))
+        if user is None: 
+            # Si la autenticación falla, levantar un error asociado al campo 'password'
+            raise serializers.ValidationError({"password": "Contraseña incorrecta"})
+        return data
 
 
 class RegisterUserSerializer(serializers.ModelSerializer):
