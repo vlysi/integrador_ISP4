@@ -5,14 +5,15 @@ from drf_yasg import openapi
 from django.contrib import admin
 from django.urls import path, include
 
+
 schema_view = get_schema_view(
     openapi.Info(
-        title="Documentación de API",
+        title="PassKeeper API",
         default_version='v0.1',
-        description="Documentacion Publica API Ampa",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@snippets.local"),
-        license=openapi.License(name="BSD License"),
+        description="Documentación Publica API PassKeeper",
+        #terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="info.rocketinnovate@gmail.com"),
+        license=openapi.License(name="MIT License"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
