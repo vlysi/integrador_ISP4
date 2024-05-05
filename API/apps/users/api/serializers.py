@@ -4,6 +4,7 @@ from django.utils import timezone
 from rest_framework import serializers
 
 from apps.users.models import User
+from apps.payments.api.serializers import PaymentSerializer
 
 from django.contrib.auth.hashers import check_password
 
@@ -13,6 +14,14 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'email','is_premium', 'is_staff')
 
+
+class UserPaymentSerializer(serializers.ModelSerializer):
+    payments = PaymentSerializer(source='payment_set', many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'payments']
+    
 
 class PasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(max_length=128, write_only=True)
