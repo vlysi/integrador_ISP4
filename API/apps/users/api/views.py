@@ -18,7 +18,7 @@ from apps.users.models import User
 from apps.users.api.serializers import (
     UserSerializer,  LoginSerializer,
     PasswordSerializer, RegisterUserSerializer,
-    LogoutSerializer,isPremiumSerializer
+    LogoutSerializer,isPremiumSerializer,UserPaymentSerializer
 )
 from core import settings
 
@@ -187,3 +187,15 @@ def request_password_reset(request):
     return Response({
         'message': 'No se encontró un usuario con ese email.'
         }, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class UserAdminViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    A ViewSet for listing users and their associated payments.
+    """
+    queryset = User.objects.prefetch_related('payment_set').all()
+    serializer_class = UserPaymentSerializer
+    #permission_classes = [permissions.IsAdminUser]
+
+
