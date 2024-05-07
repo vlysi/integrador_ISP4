@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from apps.users.api.views import LoginAPI,LogoutAPI,RegisterAPI,LoggedUserViewSet,request_password_reset,IsPremium
+from apps.users.api.views import LoginAPI,LogoutAPI,RegisterAPI,LoggedUserViewSet,request_password_reset,IsPremium, UserAdminViewSet
 
 
 urlpatterns=[
@@ -12,4 +12,5 @@ urlpatterns=[
     path('request-password-reset/', request_password_reset, name='request_password_reset'),
     path('logout/', LogoutAPI.as_view(), name='logout'),
     path('is_premium/', IsPremium.as_view(), name='Ispremium'),
+    path('admin/users/', UserAdminViewSet.as_view({'get': 'list'}), name='user-list'),
 ]
