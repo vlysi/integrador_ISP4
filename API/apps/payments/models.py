@@ -17,7 +17,7 @@ class Payment(models.Model):
         ('Reembolsado', 'Reembolsado'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL,null=True)
     method = models.CharField(max_length=10, choices=METHOD_CHOICES)
     price= models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES)
