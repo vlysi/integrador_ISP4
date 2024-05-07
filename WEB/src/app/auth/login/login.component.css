@@ -1,0 +1,94 @@
+.modal-content {
+  height: 660px;
+}
+.modal-body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+.container_logo {
+  width: 100%;
+  height: 230px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #096cb5;
+}
+.container_logo img {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+}
+.container_logo h2 {
+  color: #fff;
+  margin-top: 10px;
+}
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  gap: 13px;
+}
+form label {
+  color:#000000
+}
+.modal-dialog {
+  max-width: 350px;
+}
+input[type="checkbox"] { /* Selecciona todos los checkbox */
+  border: 1px solid #000000; /* Estilo de borde */
+}
+.form-check {
+  display:flex;
+  flex-direction: row;
+}
+.form-check label {
+  position: relative;
+  left: 10px;
+}
+.enlacesc{
+  width: 100%;
+  height: 80%;
+  position: relative;
+}
+.form-check a {
+  margin-left: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}
+form button{
+  position: relative;
+  background: #096cb5;
+}
+form button :hover{
+  background: #096cb7;
+}
+form .enlaces{
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+}
+form .enlaces p{
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+form .enlaces a{
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}
