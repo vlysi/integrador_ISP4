@@ -1,0 +1,30 @@
+.container-row{
+    background-color:  rgba(82, 136, 161, 0.2);
+    
+}
+
+.image{
+    max-width: 50%;
+    height: auto;
+}
+
+#key-color{
+    color: var(--primary-color);
+}
+
+.btn-custom{
+    color: var(--primary-color); 
+    border-color: var(--primary-color);
+    background-color: transparent;
+}
+
+.btn-custom:hover {
+    color: #0dcaf0; /* Color del texto al pasar el mouse */
+    border-color: var(--hover-background-color); /* Color del borde al pasar el mouse */
+    
+}
+
+.btn-custom:active {
+    color: #0a9bc2; /* Color del texto un poco más oscuro al hacer clic */
+    border-color: #0a9bc2; /* Color del borde un poco más oscuro al hacer clic */
+}
