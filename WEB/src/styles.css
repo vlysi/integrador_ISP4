@@ -2,7 +2,7 @@
     --primary-color: #0c8ce9;
     --pink-color:#ffd9eb;
     --green-color:#ecffda;
-    
+
   }
 
 /* MODIFICACIONES DE LOS COMPONENTES DE BOOSTRAP PARA QUE TOME LOS COLORES DE LA APP*/
@@ -16,6 +16,17 @@
 
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
-  color: #fff; 
+  color: #fff;
   background-color: var(--primary-color);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
 }
