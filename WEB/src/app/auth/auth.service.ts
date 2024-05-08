@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse} from '@angular/common/http';
 import { JwtTokens, LoginCredentials, LoginResponse } from './auth.models';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
-import {enviroment} from '../../../enviroment/enviroment';
 import { StoreService } from './store.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -11,15 +11,15 @@ import { StoreService } from './store.service';
   providedIn: 'root'
 })
 export class AuthService {
-  loginUrl=enviroment.api_Url +'account/login/';
-  refreshTokenUrl=enviroment.api_Url+'account/refresh/';
-  
-  private islogged = new BehaviorSubject<boolean>(false); 
+  loginUrl=environment.apiUrl +'account/login/';
+  refreshTokenUrl=environment.apiUrl+'account/refresh/';
+
+  private islogged = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private storeService: StoreService) {
     this.checkToken()
   }
-  
+
   logIn(credentials:LoginCredentials):Observable<LoginResponse> {
     return  this.http.post<LoginResponse>(this.loginUrl, credentials)
   }
@@ -28,7 +28,7 @@ export class AuthService {
     this.storeService.clearLocalStorage()
     this.islogged.next(false);
   }
-  
+
   refreshToken(): Observable<HttpResponse<JwtTokens>> {
     const refreshToken = {"refresh":this.storeService.getRefreshToken()};
     console.log(refreshToken)
@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     return this.http.post<HttpResponse<JwtTokens>>(this.refreshTokenUrl,refreshToken)
-      
+
   }
   setIsLogged(islogged:boolean){
     this.islogged.next(islogged);
@@ -47,7 +47,7 @@ export class AuthService {
   getIsLogged(): Observable<boolean> {
     return this.islogged.asObservable();
   }
-  
+
   checkToken() {
     this.refreshToken().subscribe({
       next:(response:any) => {
@@ -59,7 +59,7 @@ export class AuthService {
           this.storeService.setRefreshToken(refresh)
           this.islogged.next(true)
           console.log('refresh successful');
-          
+
         } else {
           this.logOut()
           // Maneja el caso donde no hay tokens en la respuesta.
@@ -75,9 +75,9 @@ export class AuthService {
         }
         console.error(errorMessage);
         // Aquí podrías mostrar el mensaje de error en la interfaz de usuario
-        
+
       }
     })
-   
+
   }
 }
