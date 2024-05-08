@@ -114,34 +114,38 @@ footer {
   color: #686868; /* Color del texto del copyright */
 }
 
+/* Media Query */
 @media (max-width: 768px) {
   footer{
     padding: 1%  1%;
   }
-
   .footer-secciones-superiores {
     flex-direction: column; /* Secciones en columna */
     align-items: center; /* Elementos centrados horizontalmente */
     max-width: 100%;
-    padding: 2% 2%;
   }
-
   .footer-seccion-inferior p{
-    font-size: 0.8rem; /* Reduccion de tamaño de letr */
+    font-size: 0.8rem; /* Reduccion de tamaño de letra */
   }
-
+  .suscripcion-container{
+    margin-top: 0;
+  }
+  .suscripcion-container input{
+    margin-bottom: 0;
+  }
   .footer-seccion-derecha,
   .footer-seccion-izquierda {
     padding-left: 0;
     max-width: 100%;
     text-align: center;
     align-items: center;
+    margin-right: 5%;
+    margin-left: 2%;
   }
-  .footer-seccion-izquierda p, h4,
+  .footer-seccion-izquierda p, h4, /* Oculto titulos y mensajes */
   .footer-seccion-derecha h5 {
     display: none;
   }
-
 }
 
 
