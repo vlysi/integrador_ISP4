@@ -1,1 +1,42 @@
-<p>footer works!</p>
+<footer class="bg-light">
+  <div class="footer-secciones-superiores">
+    <div class="footer-seccion-izquierda">
+      <h4>PassKeeper</h4>
+      <p>La solución definitiva para la gestión segura de contraseñas.</p>
+      <ul class="footer-redes-sociales">
+        <li>
+          <a href="#" class="text-muted nav-link p-0 text-muted">
+            <img src="../../../../assets/img/facebook.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#" class="text-muted nav-link p-0 text-muted">
+            <img src="../../../../assets/img/instagram.svg" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link p-0 text-muted"><img class="items gx-1" src="../../../../assets/img/whatsapp.svg"
+            alt=""></a>
+        </li>
+        <li>
+          <a href="mailto:info.rocketinnovate@gmail.com" class="nav-link p-0 text-muted"><img class="items gx-1"
+            src="../../../../assets/img/envelope-at.svg" alt=""></a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-seccion-derecha">
+      <h5>Suscríbete a nuestro Newsletter</h5>
+        <div class="suscripcion-container">
+          <input type="email" class="form-control" id="inputMail" placeholder="Correo Electrónico" aria-label="Input group example"
+            aria-describedby="btnGroupAddon2" [(ngModel)]="correoElectronico">
+          <button type="button" id="button-addon2" (click)="registrarCorreo()">SUSCRÍBETE</button>
+        </div>
+      <p *ngIf="mensaje" class="text-success"> {{ mensaje }}</p>
+      <p *ngIf="error" class="text-danger"> {{ error }}</p>
+    </div>
+  </div>
+  <div class="footer-seccion-inferior">
+    <p class="footer-texto-copyright"><img src="../../../../assets/img/undraw_rocket.svg" alt=""> Copyright RocketInnovate &copy; 2024 Todos los derechos reservados</p>
+  </div>
+</footer>
+
