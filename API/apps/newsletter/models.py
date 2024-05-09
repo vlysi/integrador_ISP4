@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Newsletter(models.Model): #modelo de newsletter
-    email = models.EmailField(unique=True, error_messages={'unique': "El correo electrónico ingresado ya está registrado."})
+    email = models.EmailField(unique=True, error_messages={'unique': "La dirección proporcionada ya se encuentra subscripta."})
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta: #metadatos
