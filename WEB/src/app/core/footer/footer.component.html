@@ -28,7 +28,7 @@
       <h5>Suscríbete a nuestro Newsletter</h5>
         <div class="suscripcion-container">
           <input type="email" class="form-control" id="inputMail" placeholder="Correo Electrónico" aria-label="Input group example"
-            aria-describedby="btnGroupAddon2" [(ngModel)]="correoElectronico">
+            aria-describedby="btnGroupAddon2" [(ngModel)]="correoElectronico" (input)="limpiarMensaje()">
           <button type="button" id="button-addon2" (click)="registrarCorreo()">SUSCRÍBETE</button>
         </div>
       <p *ngIf="mensaje" class="text-success"> {{ mensaje }}</p>
