@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NewsletterService {
   //TODO: Falta desarrollar backend
-  private url: string = environment.apiUrl+'/api/newsletter/'
+  private url: string = environment.apiUrl+'/newsletter/'
 
   constructor(private http: HttpClient) {
     console.log("*** Servicio Lista de correos corriendo ***")

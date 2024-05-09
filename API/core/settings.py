@@ -49,7 +49,6 @@ CORS_ALLOWED_ORIGINS = [
     # otros dominios que desees permitir
 ]
 
-
 # Application definition
 
 DJANGO_APPS = [
@@ -67,14 +66,15 @@ THIRT_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     'corsheaders',
-
 ]
 
 OWN_APPS = [
     'apps.users',
     'apps.payments',
-    'apps.contact'
+    'apps.contact',
+    'apps.newsletter'
 ]
+
 INSTALLED_APPS = DJANGO_APPS + THIRT_APPS + OWN_APPS
 
 REST_FRAMEWORK = {
@@ -104,7 +104,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -123,7 +122,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -133,7 +131,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
