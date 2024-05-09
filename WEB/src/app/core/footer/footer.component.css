@@ -1,0 +1,150 @@
+footer {
+  bottom: 0;
+  width: 100%; /* Ancho completo del contenedor */
+  font-family: 'Poppins', sans-serif;/* Fuente Poppins */
+}
+
+.footer-seccion-izquierda,
+.footer-seccion-derecha {
+  margin-bottom: 5%; /* Margen entre secciones */
+  max-width: 100%; /* Ocupan el ancho completo */
+}
+
+.footer-secciones-superiores {
+  display: flex; /* Permite que las secciones superiores se ubiquen una al lado de la otra */
+  justify-content: space-between; /* Distribuye las secciones con espacio entre ellas */
+  border-bottom: 1px solid #D2D2D2; /* Color gris claro para la línea */
+  padding-top: 5%; /* Espacio entre la línea y las secciones superiores */
+}
+
+.footer-seccion-izquierda {
+  padding-left: 5%;
+  color: #515151;
+}
+
+.footer-seccion-izquierda h4 {
+  color: #1090CB;
+}
+
+.footer-redes-sociales {
+  list-style: none; /* Elimina los puntos de la lista */
+  margin: 0;
+  padding: 0;
+}
+
+.footer-redes-sociales li {
+  display: inline-block; /* Permite que los íconos se muestren en línea */
+  margin-right: 1rem; /* Agrega espacio entre los íconos */
+}
+
+.footer-redes-sociales a {
+  display: inline-block; /* Permite que los enlaces se comporten como bloques */
+  width: 40px; /* Ancho del círculo */
+  height: 40px; /* Altura del círculo */
+  border-radius: 50%; /* Forma circular */
+  background-color: #fff; /* Fondo blanco */
+  text-align: center; /* Centrar el ícono */
+  line-height: 35px; /* Alinear el ícono verticalmente */
+  color: #000; /* Icono negro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra proyectada */
+  transition: background-color 0.3s ease; /* Animación de cambio de color */
+}
+
+.footer-redes-sociales a:hover {
+  background-color: rgba(16, 144, 203, 0.3); /* Azul claro con 30% de transparencia */
+}
+
+.footer-seccion-derecha {
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-right: 15%;
+}
+
+.footer-seccion-derecha h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.suscripcion-container {
+  margin-top: 10px;
+  display: flex; /* Contenedor flexible para input y botón */
+  justify-content: space-between; /* Distribuye input y botón */
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+}
+
+.suscripcion-container p {
+  margin-left: 5px;
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+}
+
+.suscripcion-container input {
+  padding: 10px;
+  border: 1px solid #CCC;
+  width: 80%; /* Ocupa el 80% del ancho */
+  margin-bottom: 10px;
+  height: 40px; /* altura de 40 píxeles */
+}
+
+.suscripcion-container button {
+  height: 40px; /* altura de 40 píxeles */
+  margin-left: 10px;
+  padding: 10px 20px 10px 20px;
+  background-color: #1090CB;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suscripcion-container button:hover {
+  background-color: #0056b3;
+}
+
+.footer-seccion-inferior {
+  text-align: center;
+  margin: 1rem;
+
+}
+
+.footer-texto-copyright {
+  color: #686868; /* Color del texto del copyright */
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  footer{
+    padding: 1%  1%;
+  }
+  .footer-secciones-superiores {
+    flex-direction: column; /* Secciones en columna */
+    align-items: center; /* Elementos centrados horizontalmente */
+    max-width: 100%;
+  }
+  .footer-seccion-inferior p{
+    font-size: 0.8rem; /* Reduccion de tamaño de letra */
+  }
+  .suscripcion-container{
+    margin-top: 0;
+  }
+  .suscripcion-container input{
+    margin-bottom: 0;
+  }
+  .footer-seccion-derecha,
+  .footer-seccion-izquierda {
+    padding-left: 0;
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+    margin-right: 5%;
+    margin-left: 2%;
+  }
+  .footer-seccion-izquierda p, h4, /* Oculto titulos y mensajes */
+  .footer-seccion-derecha h5 {
+    display: none;
+  }
+}
+
+

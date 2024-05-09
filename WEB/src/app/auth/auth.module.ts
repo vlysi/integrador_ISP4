@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
-import { SinginComponent } from './singin/singin.component';
+import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 
@@ -12,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     LoginComponent,
-    SinginComponent
+    RegisterComponent
   ],
   imports: [
     CommonModule,
