@@ -1,5 +1,12 @@
+.modal-content{
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.75);
+-webkit-box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.75);
+}
 .modal-content {
-  height: 660px;
+  height: 620px;
 }
 .modal-body {
   margin: 0;
@@ -15,6 +22,27 @@
   margin: 0;
   padding: 0;
 }
+.container_boton{
+  position: relative;
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.container_boton button{
+  position: absolute;
+  color: #096cb5;
+  background: #fff;
+  border: none;
+  border-radius:50px;
+  width: 38px;
+  height: 38px;
+  margin: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
 .container_logo {
   width: 100%;
   height: 230px;
@@ -23,6 +51,8 @@
   align-items: center;
   flex-direction: column;
   background: #096cb5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .container_logo img {
   object-fit: cover;
@@ -71,11 +101,10 @@ input[type="checkbox"] { /* Selecciona todos los checkbox */
   text-decoration: none;
 }
 form button{
-  position: relative;
-  background: #096cb5;
+  background-color: #096cb5 !important;
 }
 form button :hover{
-  background: #096cb7;
+  background-color: #096cb7 !important;
 }
 form .enlaces{
  display: flex;

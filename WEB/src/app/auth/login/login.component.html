@@ -1,38 +1,14 @@
 
-<!-- Button trigger modal -->
-<button
-  type="button"
-  class="btn btn-primary"
-  data-bs-toggle="modal"
-  data-bs-target="#staticBackdrop"
->
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="staticBackdrop"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Ingresar</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
       <div class="modal-body">
         <div ngClass="container">
           <div ngClass="container_logo">
+            <div class="container_boton">
+              <button
+              type="button"
+              (click)="onClose()"
+            >x</button></div>
             <img src="../../../assets/images/logo.png" alt="" ngClass="logo" />
             <h2>Bienvenidos</h2>
           </div>
@@ -87,7 +63,7 @@
               class="btn btn-primary"
               [disabled]="!loginForm.valid"
             >
-              Login
+              Ingresar
             </button>
             <!-- Mensaje de Error General -->
             <div *ngIf="errorMessage" class="alert alert-danger mt-3">
@@ -96,12 +72,11 @@
             <div class="enlaces">
               <p> No tienes una cuenta?</p>
               <a href="#">Registrarse</a>
-
             </div>
-
           </form>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+
