@@ -15,7 +15,7 @@ export class FooterComponent{
   constructor(private newsletterService: NewsletterService) {}
 
   registrarCorreo() {
-    if (this.correoElectronico != '' && this.correoElectronico != null) {
+    if (this.correoElectronico.trim() !== '') {
       this.newsletterService.postNewsletter(this.correoElectronico).subscribe(
         () => {
           this.mensaje = 'Correo registrado exitosamente.';
@@ -23,14 +23,19 @@ export class FooterComponent{
         },
         (error) => {
           if (error.status === 400) {
-            this.error = 'Error al registrar el correo: ' + error.error.email;
+            this.error = 'Error: ' + error.error.email;
           } else {
             this.error = 'Error al registrar el correo: ' + error.error.email;
           }
         }
       );
-    }else{
+    } else {
       this.error = 'Ingresa tu correo electrónico.';
     }
+  }
+
+  limpiarMensaje() { //para limpiar los mensajes cuando se modifica el input
+    this.mensaje = '';
+    this.error = '';
   }
 }
