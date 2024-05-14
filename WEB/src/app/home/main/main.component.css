@@ -1,19 +1,19 @@
 .container-char {
   display: grid;
-  grid-template-columns: auto auto; 
+  grid-template-columns: 1fr 2fr; 
   align-items: center; 
   gap: 2px; 
 }
 
 .container .row:first-child {
-  margin-bottom: 150px;
+  margin-bottom: 90px;
   margin-top: 50px; 
 }
 
 .icon {
   width: 70px;
   height: 70px;
-  margin-right: -40px;
+  margin-right: 10px;
   margin-top: -20px;
 }
 
@@ -30,13 +30,11 @@
 .mobile {
   background-color: #DAE6FF;
   border-radius: 5px;
-  margin-right: -60px;
 }
 
 .price-tag {
   background-color:#FFE5DA;
   border-radius: 5px;
-  margin-right: 0px;
 }
 
 .characteristics p:first-child {
@@ -51,16 +49,22 @@
 
 /**/
 
-h1 {
+/* h1 {
   font-weight: 600;
-}
+} */
 
 .title {
   margin-bottom: 100px;
 }
 
-.title p{
-  color: var(--grey-color);
+.title p:first-child {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.title p:nth-child(2){
+  color: var(--darkblue-color);
+  background-color: #F4F4F4;
 }
 
 .logo  {
@@ -88,16 +92,19 @@ span {
 }
 
 .passkeeper {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: auto;
+  display: block;
+  margin-top: -100px;
 }
 
 /**/
 
 .free, .premium {
   border-radius: 15px;
-  width: 30%;
-  height: 50%;
+  width: 90%;
+  max-width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,13 +117,15 @@ span {
 
 .premium {
   background-color:#1090CB;
-  color: white;
+  color: #FFF;
   position: relative;
 }
 
 .crown {
   position: absolute;
   top: -90px; 
+  left: 50%; 
+  transform: translateX(-50%);
 }
 
 .option {
@@ -143,6 +152,17 @@ span {
   transform: scale(1.1);
 }
 
+@media (max-width: 991px) {
+  .crown {
+    top: -40px
+  }
+}
+
+@media (max-width: 347px) {
+  .crown {
+    display: none;
+  }
+}
 
 
 
