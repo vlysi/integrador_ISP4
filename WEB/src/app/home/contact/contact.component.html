@@ -5,31 +5,33 @@
                 <h1 class="mb-5 fw-bold text-center"> Contactanos</h1>
                 <h5 class="mb-4 text-center">Estamos aqui para ayudarte.¡Déjanos saber cómo podemos asistirte!</h5>
             </div>
-            <form class="form-container" (submit)="sendMessage()">
+            <form class="form-container" (submit)="sendMessage()" [formGroup]="formContacto" >
                 <div class="mb-3">
                     <div class="row">
                         <div class="col-md-6">
                            <label for="nombre" class="form-label">Nombre:</label>
-                           <input type="text" id="nombre" name="nombre" class=" form-control rounded border-0" required>
+                           <input type="text" id="nombre" name="nombre" class=" form-control rounded border-0" formControlName="nombre" required>
                         </div>
                         <div class="col-md-6">
                             <label for="apellido" class="form-label">Apellido:</label>
-                            <input type="text" id="apellido" name="apellido"  class=" form-control rounded border-0"required>
+                            <input type="text" id="apellido" name="apellido"  class=" form-control rounded border-0" formControlName="apellido" required>
                         </div>
                         
                     </div>
                 </div>
                     <div>
                       <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                      <input type="email" id="email" name="email" class="form-control" required>
+                      <input type="email" id="email" name="email" class="form-control" formControlName="email" required>
                         
                     </div>
                     <div class="mb-3">
                       <label for="mensaje">Mensaje:</label>
-                      <textarea id="mensaje" name="mensaje" class="form-control" rows="5" required></textarea>
+                      <textarea id="mensaje" name="mensaje" class="form-control" rows="5"  formControlName="mensaje" required></textarea>
                     </div>
 
-                    <button class="btn btn-primary m-1 pt-2 px-md-5 d-block text-right" type="submit">Enviar</button>
+                    <div class="d-grid gap-2 float-end">
+                        <button class="btn btn-primary m-1 pt-2 px-md-5 d-block text-right" type="submit">Enviar</button>
+                    </div>
             </form>
         
     
