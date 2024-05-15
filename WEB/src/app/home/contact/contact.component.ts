@@ -15,10 +15,10 @@ export class ContactComponent implements OnInit{
   ngOnInit(): void {
     this.formContacto=this.fb.group({
 
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['',[ Validators.required, Validators.minLength(3) ]],
       email: ['', [Validators.required, Validators.email]],
-      mensaje: ['', Validators.required]
+      mensaje: ['', Validators.required ]
     });  
   }
 
@@ -35,6 +35,8 @@ export class ContactComponent implements OnInit{
             
           }
         );
+      } else {
+        console.error('El formulario no es valido');
       }
     }
 
