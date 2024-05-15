@@ -8,11 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ContactService {
 
-  contactUrl = environment.apiUrl +'account/contact/';
+  contactUrl = environment.apiUrl +'/contact/messages/';
 
   constructor(private http: HttpClient) { }
 
   sendMessage(mensaje: any): Observable<any> {
+    console.log("servicio url", this.contactUrl);
+    console.log("Datos del mensaje:", mensaje);
     return this.http.post<any>(this.contactUrl, mensaje);
   }
 
