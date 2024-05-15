@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginCredentials, LoginResponse } from '../auth.models';
@@ -12,7 +12,8 @@ import { StoreService } from '../store.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  
+  @Output() cerrarSesion = new EventEmitter<void>();
+
   loginForm!: FormGroup;
   public errorMessage: string = '';
   constructor(
@@ -22,6 +23,9 @@ export class LoginComponent {
     private storeService: StoreService
   ) { }
 
+  onClose() {
+    this.cerrarSesion.emit();
+  }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +33,7 @@ export class LoginComponent {
     });
   }
   ngOnDestroy(): void {
-      
+
   }
   onSubmit(): void {
     if (this.loginForm.valid) {
@@ -56,12 +60,12 @@ export class LoginComponent {
           }
           console.error(errorMessage);
           // Aquí podrías mostrar el mensaje de error en la interfaz de usuario
-          
+
         }
     });
     }
-        
-      
+
+
 
   }
 
@@ -82,10 +86,10 @@ export class LoginComponent {
     return '';
   }
 
-}  
-  
+}
 
-  
 
-  
+
+
+
 

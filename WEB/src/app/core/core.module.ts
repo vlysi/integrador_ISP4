@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { AuthModule } from '../../app/auth/auth.module';
+
 
 
 
@@ -11,10 +13,13 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     NavbarComponent,
     FooterComponent,
+
+
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
+    AuthModule,
     FormsModule
   ],
   exports: [
