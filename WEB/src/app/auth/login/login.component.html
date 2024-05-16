@@ -34,8 +34,12 @@
               />
               <h2 class="mt-3">Bienvenidos</h2>
             </div>
+            <div *ngIf="credentialIncorrect" class="text-center text-danger">
+              Usuario o contraseña incorrecto
+            </div>
             <div class="card-body">
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                
                 <!-- Campo de Email -->
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>

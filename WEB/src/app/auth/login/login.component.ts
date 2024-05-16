@@ -13,8 +13,9 @@ import { StoreService } from '../store.service';
 })
 export class LoginComponent {
   @Output() cerrarSesion = new EventEmitter<void>();
-
+  
   loginForm!: FormGroup;
+  credentialIncorrect=false
   public errorMessage: string = '';
   constructor(
     private formBuilder: FormBuilder,
@@ -45,8 +46,19 @@ export class LoginComponent {
             this.storeService.setAccessToken(response.access)
             this.storeService.setRefreshToken(response.refresh)
             this.authService.setIsLogged(true)
-            console.log('Login successful');
-            this.router.navigate(['/'])
+            const userData = JSON.parse(this.storeService.getUser());
+            if (userData) {
+             
+              if (userData && userData.is_staff) {
+                this.onClose();
+                console.log("es admin login")
+                this.router.navigate(['admin/user'])
+              }else{
+                this.onClose();
+                this.router.navigate(['/payments/'])
+              }
+            }
+            
           } else {
             // Maneja el caso donde no hay tokens en la respuesta.
             console.error('Invalid credentials', response);
@@ -54,9 +66,9 @@ export class LoginComponent {
         },
         error: (err) => {
           let errorMessage = 'An error occurred during login.';
-          if (err.status === 400) {
-            // Puedes obtener el mensaje de error de la respuesta del backend aquí
-            errorMessage = err.error.message || 'Credentials are incorrect.';
+          if (err.status === 401) {
+            this.credentialIncorrect=true
+            errorMessage = 'Usuario o Contraseña incorrecto';
           }
           console.error(errorMessage);
           // Aquí podrías mostrar el mensaje de error en la interfaz de usuario
