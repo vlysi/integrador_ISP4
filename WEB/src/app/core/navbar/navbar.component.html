@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg bg-light navbar-light" style="background-color: #fff !important;">
+<nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top" style="background-color: #fff !important;">
   <div class="container-fluid">
     <!-- Logo predeterminado -->
     <a class="navbar-brand" id="passkeeper-logo" routerLink="/" *ngIf="!isLogged">
@@ -45,6 +45,10 @@
         <!-- Boton compra cliente no premium -->
         <li class="nav-item" *ngIf="isLogged && !isStaff && !isPremium">
           <a class="btn btn-primary" routerLink="/payments" id="loginButton">Comprar</a>
+        </li>
+        <!-- Texto para cliente premium -->
+        <li class="nav-item mt-3" *ngIf="isLogged && !isStaff && isPremium" >
+          <p class="text-primary">¡Ya eres Premium!</p>
         </li>
          <!-- Boton dashboard admin -->
          <li class="nav-item" *ngIf="isLogged && isStaff">
