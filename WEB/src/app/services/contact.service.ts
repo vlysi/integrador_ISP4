@@ -7,15 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ContactService {
+  contactUrl = environment.apiUrl + '/contact/messages/';
 
-  contactUrl = environment.apiUrl +'/contact/messages/';
-
-  constructor(private http: HttpClient) { }
-
-  sendMessage(mensaje: any): Observable<any> {
-    console.log("servicio url", this.contactUrl);
-    console.log("Datos del mensaje:", mensaje);
-    return this.http.post<any>(this.contactUrl, mensaje);
+  constructor(private http: HttpClient) {
+    console.log('*** Servicio Mensajes de contacto corriendo ***');
   }
 
+  sendMessage(mensaje: any): Observable<any> {
+    return this.http.post<any>(this.contactUrl, mensaje);
+  }
 }

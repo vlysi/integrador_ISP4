@@ -1,66 +1,70 @@
 <div class="container-fluid px-0">
-    <div class="row container-row pt-5 pb-4">
-        <div class="align-items-center justify-content-center">
-            <div class=" container mb-6">
-                <h1 class="mb-5 fw-bold text-center"> Contactanos</h1>
-                <h5 class="mb-4 text-center">Estamos aqui para ayudarte.¡Déjanos saber cómo podemos asistirte!</h5>
+  <div class="row container-row pt-5 pb-4">
+    <div class="align-items-center justify-content-center">
+      <div class=" container mb-6">
+        <h1 class="mb-5 fw-bold text-center"> Contactanos</h1>
+        <h5 class="mb-4 text-center">Estamos aqui para ayudarte.¡Déjanos saber cómo podemos asistirte!</h5>
+      </div>
+      <form class="form-container" (submit)="sendMessage()" [formGroup]="formContacto">
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" class=" form-control rounded border-0" formControlName="name"
+                required>
+              <div
+                *ngIf="formContacto.get('nombre')?.invalid && (formContacto.get('nombre')?.dirty || formContacto.get('nombre')?.touched)"
+                class="text-danger">
+                Nombre requiere al menos 3 caracteres.
+              </div>
             </div>
-            <form class="form-container" (submit)="sendMessage()" [formGroup]="formContacto" >
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                           <label for="nombre" class="form-label">Nombre:</label>
-                           <input type="text" id="nombre" name="nombre" class=" form-control rounded border-0" formControlName="name" [(ngModel)]="name" required>
-                           <div *ngIf="formContacto.get('nombre')?.invalid && (formContacto.get('nombre')?.dirty || formContacto.get('nombre')?.touched)"
-                           class="text-danger">
-                           Nombre requiere al menos 3 caracteres.
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="apellido" class="form-label">Apellido:</label>
-                            <input type="text" id="apellido" name="apellido"  class=" form-control rounded border-0" formControlName="last_name" [(ngModel)]="lastname" required>
-                            <div *ngIf="formContacto.get('apellido')?.invalid && (formContacto.get('apellido')?.dirty || formContacto.get('apellido')?.touched)"
-                           class="text-danger">
-                           Apellido requiere al menos 3 caracteres.
-                           </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                    <div>
-                      <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                      <input type="email" id="email" name="email" class="form-control" formControlName="email" [(ngModel)]="mail" required>
-                      <div *ngIf="formContacto.get('email')?.invalid && (formContacto.get('email')?.dirty || formContacto.get('email')?.touched) && formContacto.get('email')?.value !== '' "
-                      class="text-danger">
-                      Email requiere el formato .....@.....
-                      </div> 
-                    </div>
-                    <div class="mb-3">
-                      <label for="mensaje">Mensaje:</label>
-                      <textarea id="mensaje" name="mensaje" class="form-control" rows="5"  formControlName="message" [(ngModel)]="msg" required></textarea>
-                      <div *ngIf="formContacto.get('mensaje')?.invalid && (formContacto.get('mensaje')?.dirty || formContacto.get('mensaje')?.touched)"
-                           class="text-danger">
-                           Este campo es requerido.
-                           </div>
-                    </div>
+            <div class="col-md-6">
+              <label for="apellido" class="form-label">Apellido:</label>
+              <input type="text" id="apellido" name="apellido" class=" form-control rounded border-0"
+                formControlName="last_name" required>
+              <div
+                *ngIf="formContacto.get('apellido')?.invalid && (formContacto.get('apellido')?.dirty || formContacto.get('apellido')?.touched)"
+                class="text-danger">
+                Apellido requiere al menos 3 caracteres.
+              </div>
+            </div>
 
-                    <div>
-                        <p *ngIf="mensaje" class="text-success"> {{ mensaje }}</p>
-                        <p *ngIf="error" class="text-danger"> {{ error }}</p>
-                    </div>
-
-
-
-                    <div class="d-grid gap-2 float-end">
-                        <button class="btn btn-primary m-1 pt-2 px-md-5 d-block text-right" [disabled]="formContacto.invalid" type="submit">Enviar</button>
-                    </div>
-            </form>
-        
-    
-
+          </div>
         </div>
+        <div>
+          <label for="email" class="col-sm-2 col-form-label">Email:</label>
+          <input type="email" id="email" name="email" class="form-control" formControlName="email">
+          <div
+            *ngIf="formContacto.get('email')?.invalid && (formContacto.get('email')?.dirty || formContacto.get('email')?.touched) && formContacto.get('email')?.value !== '' "
+            class="text-danger">
+            Email requiere el formato .....@.....
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" class="form-control" rows="5" formControlName="message"
+            required></textarea>
+          <div
+            *ngIf="formContacto.get('mensaje')?.invalid && (formContacto.get('mensaje')?.dirty || formContacto.get('mensaje')?.touched)"
+            class="text-danger">
+            Este campo es requerido.
+          </div>
+        </div>
+        <div>
+          <p *ngIf="mensaje" class="text-success"> {{ mensaje }}</p>
+          <p *ngIf="error" class="text-danger"> {{ error }}</p>
+        </div>
+        <div class="d-grid gap-2 float-end">
+          <button class="btn btn-primary m-1 pt-2 px-md-5 d-block text-right" [disabled]="formContacto.invalid"
+            type="submit">Enviar</button>
+        </div>
+      </form>
+
 
 
     </div>
+
+
+  </div>
 
 </div>

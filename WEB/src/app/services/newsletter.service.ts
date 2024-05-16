@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class NewsletterService {
-  //TODO: Falta desarrollar backend
   private url: string = environment.apiUrl+'/newsletter/'
 
   constructor(private http: HttpClient) {
