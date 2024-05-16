@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule { }
