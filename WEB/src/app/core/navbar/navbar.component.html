@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg bg-light navbar-light" style="background-color: #fff !important;">
+<nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top" style="background-color: #fff !important;">
   <div class="container-fluid">
     <!-- Logo predeterminado -->
     <a class="navbar-brand" id="passkeeper-logo" routerLink="/" *ngIf="!isLogged">
@@ -27,43 +27,34 @@
 
     <!-- Items lado derecho -->
       <ul class="navbar-nav ms-auto align-items-center">     
-        <li class="nav-item" *ngIf="!isLogged">
+        <li class="nav-item">
           <a class="nav-link mx-2" routerLink="/" routerLinkActive="active-link-color">Inicio</a>
         </li>
-        <li class="nav-item" *ngIf="!isLogged">
+        <li class="nav-item">
           <a class="nav-link mx-2" href="#header" routerLinkActive="active-link-color">Seguridad</a>
         </li>
-        <li class="nav-item" *ngIf="!isLogged">
+        <li class="nav-item">
           <a class="nav-link mx-2" href="#about-us" routerLinkActive="active-link-color">Nosotros</a>
         </li>
-        <li class="nav-item" *ngIf="!isLogged">
+        <li class="nav-item">
           <a class="nav-link mx-2" href="#contact" routerLinkActive="active-link-color">Contacto</a>
         </li>
         <li class="nav-item" *ngIf="!isLogged">
           <a (click)="toogleLogin()" class="btn btn-primary" id="loginButton">Iniciar sesion</a>
         </li>
-        <!-- CLIENTE: Mi cuenta , Mi plan (VERSION ESCRITORIO) -->
-        <div class="dropdown d-none d-lg-block m-2" *ngIf="isLogged && !isStaff">
-          <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-            </svg>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
-            <li><a class="dropdown-item" href="#">Mi plan</a></li>
-          </ul>
-        </div>
-        <!-- CLIENTE: Mi cuenta , Mi plan (VERSION TABLET Y CELULARES) -->
-        <div class="d-lg-none text-center">
-          <li class="nav-item" *ngIf="isLogged && !isStaff">
-            <a class="nav-link mx-2" href="#header" routerLinkActive="active-link-color">Mi cuenta</a>
-          </li>
-          <li class="nav-item" *ngIf="isLogged && !isStaff">
-            <a class="nav-link mx-2" href="#header" routerLinkActive="active-link-color">Mi plan</a>
-          </li>
-        </div>
+        <!-- Boton compra cliente no premium -->
+        <li class="nav-item" *ngIf="isLogged && !isStaff && !isPremium">
+          <a class="btn btn-primary" routerLink="/payments" id="loginButton">Comprar</a>
+        </li>
+        <!-- Texto para cliente premium -->
+        <li class="nav-item mt-3" *ngIf="isLogged && !isStaff && isPremium" >
+          <p class="text-primary">¡Ya eres Premium!</p>
+        </li>
+         <!-- Boton dashboard admin -->
+         <li class="nav-item" *ngIf="isLogged && isStaff">
+          <a class="btn btn-primary" routerLink="/admin" id="loginButton">Dashboard</a>
+        </li>
+      
        
         <li *ngIf="isLogged" class="nav-item">
           <a  class="nav-link centered" id="logoutButton" (click)="logOut()">Cerrar Sesion  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">

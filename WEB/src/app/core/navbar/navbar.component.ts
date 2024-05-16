@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   user: any;
   isStaff = false;
   mostrarLogin = false;
+  isPremium = false;
 
   constructor(public authService: AuthService) {
     this.authService.getIsLogged().subscribe(logged => {
@@ -29,10 +30,11 @@ export class NavbarComponent implements OnInit {
         const userData = localStorage.getItem('user');
         if (userData) {
           this.user = JSON.parse(userData);
-          this.checkIsStaff(); // Check isStaff property on login
+          this.checkIsStaff(); // Comprobar si el usuario es admin al Iniciar sesion
+          this.checkIsPremium(); // Comprobar si el usuario es premium al iniciar sesion
         }
       } else {
-        this.user = null; // Clear user object on logout
+        this.user = null;
       }
     });
   }
@@ -47,8 +49,15 @@ export class NavbarComponent implements OnInit {
     const userData = localStorage.getItem('user');
     if (userData) {
       this.user = JSON.parse(userData);
-      if (this.isLogged) { // Check isStaff property on initial load if logged in
+      if (this.isLogged) { // Verificar la propiedad isStaff en la carga inicial si se inicia sesión
         this.checkIsStaff();
+      }
+    }
+
+    if (userData) {
+      this.user = JSON.parse(userData);
+      if (this.isLogged) { // Vericar la propiedad isPremium en la carga inicial si se inicia sesión
+        this.checkIsPremium();
       }
     }
 
@@ -82,6 +91,16 @@ export class NavbarComponent implements OnInit {
     } else {
       // Update navbar to display "este usuario es cliente"
       console.log('Este usuario es cliente');
+      this.isStaff = false;
+    }
+  }
+
+  private checkIsPremium() {
+    if (this.user && this.user.is_premium) {
+      console.log('Este usuario es premium');
+      this.isStaff = true;
+    } else {
+      console.log('Este usuario no es premium');
       this.isStaff = false;
     }
   }
