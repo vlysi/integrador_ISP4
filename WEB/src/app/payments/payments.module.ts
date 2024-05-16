@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PaymentsRoutingModule } from './payments-routing.module';
 import { PaymentsGatewayComponent } from './payments-gateway/payments-gateway.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { PaymentsGatewayComponent } from './payments-gateway/payments-gateway.co
     PaymentsGatewayComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     PaymentsRoutingModule
   ]

@@ -43,10 +43,11 @@ else:
     ANDROID_KEY= env('ANDROID_KEY')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     # otros dominios que desees permitir
+    "https://98fa52fa23def6.lhr.life"
 ]
 
 # Application definition
@@ -174,3 +175,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#MERCADOPAGO_ACCESS_TOKEN = env('MERCADOPAGO_ACCESS_TOKEN')
+MERCADOPAGO_ACCESS_TOKEN = "TEST-4383196676351946-051509-0ce6e678d7d8056bd3b536a6d75fa15b-1812126021"
