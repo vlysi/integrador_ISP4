@@ -11,12 +11,12 @@ export class TablePaymentComponent implements OnInit {
 
   constructor(private paymentsService: PaymentsService) { }
 
-  paymentsData: { id: number, user: number, method: string, price: string, status: string }[] = [];
+  paymentsData: { id: number, user: number, user_email: string, method: string, price: string, status: string }[] = [];
 
   ngOnInit() {
     this.paymentsService.getPayments()
       .subscribe(paymentsData => {
-        this.paymentsData = paymentsData as { id: number; user: number; method: string; price: string; status: string; }[]; // Type assertion
+        this.paymentsData = paymentsData as { id: number; user: number; user_email: string; method: string; price: string; status: string; }[]; // Type assertion
       });
       console.log(this.paymentsData)
   }
