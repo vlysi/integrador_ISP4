@@ -11,8 +11,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  loginUrl=environment.apiUrl +'account/login/';
-  refreshTokenUrl=environment.apiUrl+'account/refresh/';
+  loginUrl=environment.apiUrl +'/account/login/';
+  refreshTokenUrl=environment.apiUrl+'/account/refresh/';
 
   private islogged = new BehaviorSubject<boolean>(false);
 

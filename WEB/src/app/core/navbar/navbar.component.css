@@ -2,8 +2,7 @@
     color: var(--primary-color);
   }
   .navbar{
-    border-bottom: 0.7px solid#C4C4C4
-    ;
+    border-bottom: 0.7px solid#C4C4C4;
   }
 
 #passkeeper-logo{
@@ -41,7 +40,8 @@
 }
 
 .navbar-toggler:focus {
-  box-shadow: none !important; 
+  box-shadow: none !important;
+   
 }
 
 
