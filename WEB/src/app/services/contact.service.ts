@@ -13,7 +13,15 @@ export class ContactService {
     console.log('*** Servicio Mensajes de contacto corriendo ***');
   }
 
+  
+  // Método para realizar la solicitud POST
   sendMessage(mensaje: any): Observable<any> {
     return this.http.post<any>(this.contactUrl, mensaje);
   }
+
+  // Método para realizar una solicitud GET
+  getMessages(): Observable<any[]> {
+    return this.http.get<any[]>(this.contactUrl);
+  }
+
 }

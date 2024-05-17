@@ -1,0 +1,17 @@
+.tarjeta-mensaje {
+    margin: 5px;
+    width: 18rem;
+}
+
+.fullcont {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 782px) {
+
+    .tarjeta-mensaje {
+        width: 100%;
+    }
+
+}
