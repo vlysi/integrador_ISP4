@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
         if (userData) {
           this.user = JSON.parse(userData);
           this.checkIsStaff(); // Comprobar si el usuario es admin al Iniciar sesion
-          this.checkIsPremium(); // Comprobar si el usuario es premium al iniciar sesion
+          this.checkIsPremium();// Comprobar si el usuario es premium al iniciar sesion
         }
       } else {
         this.user = null;
@@ -51,15 +51,10 @@ export class NavbarComponent implements OnInit {
       this.user = JSON.parse(userData);
       if (this.isLogged) { // Verificar la propiedad isStaff en la carga inicial si se inicia sesión
         this.checkIsStaff();
-      }
-    }
-
-    if (userData) {
-      this.user = JSON.parse(userData);
-      if (this.isLogged) { // Vericar la propiedad isPremium en la carga inicial si se inicia sesión
         this.checkIsPremium();
       }
     }
+
 
     if (window.innerWidth < 768) {
       this.isMenuOpen = true;
@@ -98,10 +93,10 @@ export class NavbarComponent implements OnInit {
   private checkIsPremium() {
     if (this.user && this.user.is_premium) {
       console.log('Este usuario es premium');
-      this.isStaff = true;
+      this.isPremium = true;
     } else {
       console.log('Este usuario no es premium');
-      this.isStaff = false;
+      this.isPremium = false;
     }
   }
 }
