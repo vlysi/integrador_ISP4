@@ -90,4 +90,16 @@ export class AuthService {
   
     return currentTime >= expiry;
   }
+ 
+getCurrentUser(): Observable<User | null> {
+  return this.currentUser.asObservable();
 }
+
+// Método para establecer el usuario actual
+setCurrentUser(user: User | null): void {
+  
+  if (user) {
+    this.storeService.setUser(user);  // Asumiendo que tienes un método para guardar el usuario en localStorage
+    
+}}}
+
