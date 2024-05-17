@@ -1,0 +1,8 @@
+.container {
+    font-family: 'Poppins', sans-serif;
+    background-color:  rgba(82, 136, 161, 0.2);
+}
+
+#key-word{
+    color: var(--primary-color);
+}
