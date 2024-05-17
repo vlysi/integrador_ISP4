@@ -55,7 +55,7 @@ class CreatePreferenceView(APIView):
            
             for item in preference_data['items']:
                 item['unit_price'] = float(item['unit_price'])
-            preference_data['notification_url'] = 'https://3e8b-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
+            preference_data['notification_url'] = 'https://c78e-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
             user = request.user.email
             preference_data['external_reference'] = user 
             preference_response = sdk.preference().create(preference_data)
@@ -77,7 +77,7 @@ class PaymentMethodsView(APIView):
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
-    #permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def create(self, request, *args, **kwargs):
         sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)

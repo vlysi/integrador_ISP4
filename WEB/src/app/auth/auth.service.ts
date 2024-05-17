@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse} from '@angular/common/http';
-import { JwtTokens, LoginCredentials, LoginResponse } from './auth.models';
+import { JwtTokens, LoginCredentials, LoginResponse,User } from './auth.models';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { StoreService } from './store.service';
 import { environment } from 'src/environments/environment';
@@ -16,11 +16,20 @@ export class AuthService {
   registerUrl=environment.apiUrl+'/account/register/';
 
   private islogged = new BehaviorSubject<boolean>(false);
+  private currentUser = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private storeService: StoreService) {
-    this.checkToken()
+    
+    if (this.checkTokenRefresh()){
+      this.islogged.next(true);
+      const user = this.storeService.getUser();
+      this.currentUser.next(user ? JSON.parse(user) : null);
+      
+    }else{
+      this.logOut()
+    }
   }
-
+  
   logIn(credentials:LoginCredentials):Observable<LoginResponse> {
     return  this.http.post<LoginResponse>(this.loginUrl, credentials)
   }
@@ -30,6 +39,7 @@ export class AuthService {
   logOut(){
     this.storeService.clearLocalStorage()
     this.islogged.next(false);
+    this.currentUser.next(null);
   }
 
   refreshToken(): Observable<HttpResponse<JwtTokens>> {
@@ -51,36 +61,31 @@ export class AuthService {
     return this.islogged.asObservable();
   }
 
-  checkToken() {
-    this.refreshToken().subscribe({
-      next:(response:any) => {
-        console.log(response.access)
-        const access=(response.access)
-        const refresh=response.refresh
-        if (access && refresh ) {
-          this.storeService.setAccessToken(access)
-          this.storeService.setRefreshToken(refresh)
-          this.islogged.next(true)
-          console.log('refresh successful');
+  checkTokenAccess():boolean{
+    const accessToken = this.storeService.getAccessToken();
+    return !this.isTokenExpired(accessToken);
+  }
+  checkTokenRefresh(): boolean {
+    const refreshToken = this.storeService.getRefreshToken();
+    return !this.isTokenExpired(refreshToken);
+  }
 
-        } else {
-          this.logOut()
-          // Maneja el caso donde no hay tokens en la respuesta.
-          console.error('Invalid credentials', response);
-        }
-      },
-      error: (err) => {
-        this.logOut()
-        let errorMessage = 'An error occurred during login.';
-        if (err.status === 400) {
-          // Puedes obtener el mensaje de error de la respuesta del backend aquí
-          errorMessage = err.error.message || 'Credentials are incorrect.';
-        }
-        console.error(errorMessage);
-        // Aquí podrías mostrar el mensaje de error en la interfaz de usuario
-
-      }
-    })
-
+  private isTokenExpired(token: string): boolean {
+    if (!token) {
+      console.log('Token not found.');
+      return true;
+    }
+  
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    const currentTime = Math.floor((new Date).getTime() / 1000);
+    const timeLeft = expiry - currentTime;
+  
+    if (timeLeft > 0) {
+      console.log(`Token will expire in ${timeLeft} seconds.`);
+    } else {
+      console.log('Token has expired.');
+    }
+  
+    return currentTime >= expiry;
   }
 }
