@@ -4,6 +4,7 @@ import { JwtTokens, LoginCredentials, LoginResponse,User } from './auth.models';
 import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { StoreService } from './store.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 
 
@@ -18,7 +19,7 @@ export class AuthService {
   private islogged = new BehaviorSubject<boolean>(false);
   private currentUser = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private storeService: StoreService) {
+  constructor(private http: HttpClient, private storeService: StoreService,private router: Router) {
     
     if (this.checkTokenRefresh()){
       this.islogged.next(true);
@@ -40,6 +41,7 @@ export class AuthService {
     this.storeService.clearLocalStorage()
     this.islogged.next(false);
     this.currentUser.next(null);
+    this.router.navigate(['/'])
   }
 
   refreshToken(): Observable<HttpResponse<JwtTokens>> {
