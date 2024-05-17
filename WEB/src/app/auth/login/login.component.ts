@@ -52,7 +52,7 @@ export class LoginComponent {
               if (userData && userData.is_staff) {
                 this.onClose();
                 console.log("es admin login")
-                this.router.navigate(['admin/user'])
+                this.router.navigate(['admin/payments'])
               }else{
                 this.onClose();
                 this.router.navigate(['/payments/'])
