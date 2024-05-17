@@ -6,11 +6,13 @@ class PayerSerializer(serializers.Serializer):
     first_name = serializers.CharField(max_length=100, required=False)
     last_name = serializers.CharField(max_length=100, required=False)
 class PaymentSerializer(serializers.ModelSerializer):
-    
+    user_email = serializers.CharField(source='user.email', read_only=True)
+
     class Meta:
         user = serializers.StringRelatedField()
         model = Payment
-        fields = ['id', 'user', 'method', 'price', 'status']
+        fields = ['id', 'user', 'method', 'price', 'status', 'user_email']
+
 
 class ItemSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=200)

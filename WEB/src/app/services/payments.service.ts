@@ -15,7 +15,7 @@ export class PaymentsService {
 
   // Método para obtener payments
   getPayments() {
-    return this.http.get(environment.apiUrl+'/payments/');
+    return this.http.get(environment.apiUrl+'/payments/payments/');
   }
 
 

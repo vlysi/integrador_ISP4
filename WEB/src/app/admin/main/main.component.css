@@ -3,33 +3,68 @@
     flex-direction: row;
     width: 100%;
 }
+/* La disposición del dashboard se establece por defecto como una fila*/
 
+/* Estilos generales para el panel lateral del dashboard */
 app-dashboard {
+    /* Establece un contenedor flexible con dirección en columna */
     display: flex;
     flex-direction: column;
-    min-height: 70vh; 
+  
+    /* Define una altura mínima del 70% del viewport */
+    min-height: 70vh;
+  
+    /* Asigna un ancho del 18% */
     width: 18%;
+  
+    /* Agrega un padding de 10px alrededor del contenido */
     padding: 10px;
+  
+    /* Establece un borde negro sólido de 1px */
     border: 1px solid #000000;
-}
-
-app-body {
+  
+    /* Agrega un margen derecho de 2px */
+    margin-right: 2px;
+  }
+  
+  /* Estilos generales para el cuerpo principal del dashboard */
+  app-body {
+    /* Asigna un ancho del 82% */
     width: 82%;
+  
+    /* Establece un borde negro sólido de 1px */
     border: 1px solid #000000;
-}
-
-@media screen and (max-width: 1024px) {
+  }
+  
+  /* Estilos para pantallas con ancho máximo de 1024px */
+  @media screen and (max-width: 1024px) {
+    /* Contenedor principal (asumiendo que esta clase ya está definida) */
     .container-fluid {
-        flex-direction: column;
-        align-items: center;
+      /* Cambia la dirección del flex a columna */
+      flex-direction: column;
+  
+      /* Centra los elementos alineados */
+      align-items: center;
     }
-    app-dashboard-nav {
-        width: 100%;
-        min-height: 30vh; 
-        height: fit-content;
-    } 
-    app-dashboard-body {
-        width: 100%;
-        min-height: 450px;
+  
+    /* Estilos específicos para el panel lateral en pantallas pequeñas */
+    app-dashboard {
+      /* Modifica el ancho al 82% */
+      width: 82%;
+  
+      /* Cambia la altura mínima a 30vh */
+      min-height: 30vh;
+  
+      /* Ajusta la altura según el contenido */
+      height: fit-content;
+  
+      /* Agrega un margen del 2% superior e inferior */
+      margin: 2% 0;
     }
-}
+  
+    /* Estilos específicos para el cuerpo principal en pantallas pequeñas */
+    app-body {
+      /* Define una altura mínima de 450px */
+      min-height: 450px;
+    }
+  }
