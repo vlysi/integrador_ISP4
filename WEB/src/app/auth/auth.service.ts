@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   loginUrl=environment.apiUrl +'/account/login/';
   refreshTokenUrl=environment.apiUrl+'/account/refresh/';
+  registerUrl=environment.apiUrl+'/account/register/';
 
   private islogged = new BehaviorSubject<boolean>(false);
 
@@ -23,7 +24,9 @@ export class AuthService {
   logIn(credentials:LoginCredentials):Observable<LoginResponse> {
     return  this.http.post<LoginResponse>(this.loginUrl, credentials)
   }
-
+  register(credentials:LoginCredentials):Observable<LoginResponse> {
+    return  this.http.post<LoginResponse>(this.registerUrl, credentials)
+  }
   logOut(){
     this.storeService.clearLocalStorage()
     this.islogged.next(false);
