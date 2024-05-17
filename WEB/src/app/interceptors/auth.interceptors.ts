@@ -18,10 +18,18 @@ export class AuthInterceptor implements HttpInterceptor {
     const loginUrl = `${environment.apiUrl}/account/login/`;
     const registerUrl = `${environment.apiUrl}/account/register/`;
     const refreshUrl = `${environment.apiUrl}/account/refresh/`;
+    const contactUrl = `${environment.apiUrl}/contact/messages/`;
+    
 
     if (req.url.includes(loginUrl) || req.url.includes(registerUrl) || req.url.includes(refreshUrl)) {
       console.log('Request to login, register, or refresh, not adding token');
       return next.handle(req);
+    }
+    if (req.url.includes(contactUrl)&& req.method === 'POST') {
+      
+        console.log('POST request to contact messages, not adding token');
+        return next.handle(req);
+      
     }
     if (!this.authService.checkTokenRefresh()) {
       console.log('Refresh token expired, logging out');
