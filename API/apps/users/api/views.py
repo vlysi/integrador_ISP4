@@ -196,6 +196,6 @@ class UserAdminViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     queryset = User.objects.prefetch_related('payment_set').all()
     serializer_class = UserPaymentSerializer
-    #permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAdminUser]
 
 

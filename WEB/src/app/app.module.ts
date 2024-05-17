@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptors';
+
 
 
 @NgModule({
@@ -17,6 +20,14 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     CoreModule,
     HomeModule,
+    
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   
   bootstrap: [AppComponent]
