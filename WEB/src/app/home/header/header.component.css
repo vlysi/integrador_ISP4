@@ -4,36 +4,36 @@ header{
 
 /* Color de fondo del header*/
 .container-row{
-    background-color:  rgba(82, 136, 161, 0.2);  
+    background-color:  rgba(82, 136, 161, 0.2);
 }
 
 /*Tamaño de la imagen*/
 .image{
-    max-width: 60%;   
-    height: auto;  
+    max-width: 50%;
+    height: auto;
 }
 
 /*Se resalta con color diferencial la palabra PassKeeper */
 #key-color{
-    color: var(--primary-color);  
+    color: var(--primary-color);
 }
 
 /* Se configura la estética del boton Conocé Mas" */
 .btn-custom{
-    color: var(--primary-color);   
-    border-color: var(--primary-color); 
+    color: var(--primary-color);
+    border-color: var(--primary-color);
     background-color: transparent;
 }
 
 /* Se configura el efecto hover sobre el botón Conocé Más*/
 .btn-custom:hover {
-    color: #0dcaf0; 
-    border-color: var(--hover-background-color); 
-    
+    color: #0dcaf0;
+    border-color: var(--hover-background-color);
+
 }
 
 /* Se configura el efecto sobre el botón Conocé Más cuando se hace click sobre el mismo */
 .btn-custom:active {
-    color: #0a9bc2; 
-    border-color: #0a9bc2; 
+    color: #0a9bc2;
+    border-color: #0a9bc2;
 }

@@ -1,13 +1,13 @@
 .container-char {
   display: grid;
-  grid-template-columns: 1fr 2fr; 
-  align-items: center; 
-  gap: 2px; 
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2px;
 }
 
 .container .row:first-child {
   margin-bottom: 90px;
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 .icon {
@@ -19,7 +19,7 @@
 
 .lock {
   background-color: #FFD9EB;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
 .clock {
@@ -38,7 +38,7 @@
 }
 
 .characteristics p:first-child {
-  font-weight: 600;  
+  font-weight: 600;
 }
 
 .characteristics p:nth-child(2) {
@@ -47,7 +47,7 @@
   margin-top: -8px;
 }
 
-/**/
+
 
 .title {
   margin-bottom: 100px;
@@ -58,10 +58,7 @@
   font-weight: 600;
 }
 
-.title p:nth-child(2){
-  color: var(--darkblue-color);
-  background-color: #F4F4F4;
-}
+
 
 .logo  {
   background-color: var(--darkblue-color);
@@ -75,10 +72,20 @@
 }
 
 .credential-text,
-.features-list {
+.features-list,
+.section-title {
   color: var(--grey-color);
+
+
 }
 
+.credential-text{
+  line-height: 2rem;
+}
+
+.features-list li{
+  padding-bottom: 1rem;
+}
 span {
   color: var(--darkblue-color);
 }
@@ -119,8 +126,8 @@ span {
 
 .crown {
   position: absolute;
-  top: -90px; 
-  left: 50%; 
+  top: -90px;
+  left: 50%;
   transform: translateX(-50%);
 }
 
@@ -138,9 +145,9 @@ span {
 }
 
 .btn-custom {
-  color: var(--primary-color); 
-  background-color: #FFF; 
-  margin-top: 112px;  
+  color: var(--primary-color);
+  background-color: #FFF;
+  margin-top: 112px;
   transition: all 0.3s ease;
 }
 
@@ -162,6 +169,6 @@ span {
 
 
 
-   
+
 
 
