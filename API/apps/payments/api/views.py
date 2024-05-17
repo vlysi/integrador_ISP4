@@ -20,18 +20,36 @@ def payment_notification(request):
         try:
             data = json.loads(request.body.decode('utf-8'))
             sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
-
             # ID de la notificación de pago recibida
             payment_id = data.get('data', {}).get('id')
             if payment_id:
                 # Obtener la información completa del pago
                 payment_info = sdk.payment().get(payment_id)
-                
                 if payment_info['response']['status'] == 'approved':
                     user_email = payment_info['response'].get('external_reference')
                     if user_email:
                         # Actualizar el estado is_premium del usuario
                         User.objects.filter(email=user_email).update(is_premium=True)
+                        status = payment_info['response'].get('status')
+                        transaction_amount = payment_info['response'].get('transaction_amount', 0)
+                        method = payment_info['response'].get('payment_type_id', 'Desconocido')
+                        user=User.objects.filter(email=user_email).first()
+                        try:
+                            payment = Payment(
+                                user=user,
+                                method=method,
+                                price=transaction_amount,
+                                status=status
+                            )
+                            payment.save()
+                            print("Payment record created:", payment)
+                        except IntegrityError as e:
+                            print("Database integrity error:", str(e))
+                            return JsonResponse({'error': 'Database integrity error', 'details': str(e)}, status=500)
+                        except Exception as e:
+                            print("Error saving payment:", str(e))
+                            return JsonResponse({'error': 'Error saving payment', 'details': str(e)}, status=500)
+                    
 
             return JsonResponse({'status': 'received', 'message': 'Payment processed'})
 
@@ -41,21 +59,18 @@ def payment_notification(request):
             return JsonResponse({'error': 'Internal server error', 'details': str(e)}, status=500)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
 class CreatePreferenceView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = PreferenceSerializer(data=request.data)
         if serializer.is_valid():
             # Inicializa SDK de MercadoPago
             sdk = mercadopago.SDK(settings.MERCADOPAGO_ACCESS_TOKEN)
-
             # Obtiene los datos validados y asegura que todos los decimales sean floats
             preference_data = serializer.validated_data
-            
-
-           
             for item in preference_data['items']:
                 item['unit_price'] = float(item['unit_price'])
-            preference_data['notification_url'] = 'https://c78e-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
+            preference_data['notification_url'] = 'https://9732-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
             user = request.user.email
             preference_data['external_reference'] = user 
             preference_response = sdk.preference().create(preference_data)
