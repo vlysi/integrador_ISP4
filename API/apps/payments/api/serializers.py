@@ -27,6 +27,5 @@ class ItemSerializer(serializers.Serializer):
 
 class PreferenceSerializer(serializers.Serializer):
     items = ItemSerializer(many=True)
-    payer = PayerSerializer()  # Añade el serializer del pagador
     back_urls = serializers.DictField(child=serializers.URLField())
     auto_return = serializers.ChoiceField(choices=['approved', 'all', 'none'])
