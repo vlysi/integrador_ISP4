@@ -25,7 +25,7 @@ export class FooterComponent{
           if (error.status === 400) {
             this.error = 'Error: ' + error.error.email;
           } else {
-            this.error = 'Error al registrar el correo: ' + error.error.email;
+            this.error = 'Error al registrar el correo.';
           }
         }
       );
