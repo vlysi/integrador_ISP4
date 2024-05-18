@@ -70,7 +70,7 @@ class CreatePreferenceView(APIView):
             preference_data = serializer.validated_data
             for item in preference_data['items']:
                 item['unit_price'] = float(item['unit_price'])
-            preference_data['notification_url'] = 'https://9732-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
+            preference_data['notification_url'] = 'https://8309-152-170-59-6.ngrok-free.app/payments/mp-notifications/'
             user = request.user.email
             preference_data['external_reference'] = user 
             preference_response = sdk.preference().create(preference_data)

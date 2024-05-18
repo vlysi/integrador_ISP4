@@ -24,12 +24,12 @@ export class PaymentsGatewayComponent {
           {
               title: 'PassKeeper Premium Version',
               quantity: 1,
-              unit_price: '1500' // El precio está como string, conforme a la definición de la interfaz
+              unit_price: '5000' // El precio está como string, conforme a la definición de la interfaz
           }
       ],
       
       back_urls: {
-          success: 'http://localhost:4200/payments/',
+          success: 'http://localhost:4200/payments/success',
           failure: 'http://localhost:4200',
           pending: 'http://localhost:4200'
       },
