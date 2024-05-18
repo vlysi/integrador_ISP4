@@ -11,7 +11,7 @@ export class NewsletterService {
   private url: string = environment.apiUrl+'/newsletter/'
 
   constructor(private http: HttpClient) {
-    console.log("*** Servicio Lista de correos corriendo ***")
+    console.log("*** Service Mailing list running ***")
   }
 
 // metodo para registrar un nuevo email

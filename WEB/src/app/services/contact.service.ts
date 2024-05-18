@@ -10,10 +10,9 @@ export class ContactService {
   contactUrl = environment.apiUrl + '/contact/messages/';
 
   constructor(private http: HttpClient) {
-    console.log('*** Servicio Mensajes de contacto corriendo ***');
+    console.log('*** Service Contact messages running ***');
   }
 
-  
   // Método para realizar la solicitud POST
   sendMessage(mensaje: any): Observable<any> {
     return this.http.post<any>(this.contactUrl, mensaje);
