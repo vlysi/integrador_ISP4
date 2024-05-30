@@ -50,6 +50,7 @@ public class DbManager {
     //public static final String ID_USER = "id";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
+    public static final String PREMIUM = "premium";
     public static final String SALT = "salt"; // Columna para almacenar el salt
     public static final String BIO = "biometric"; // Columna para almacenar la opcion biometrica
 
@@ -58,11 +59,13 @@ public class DbManager {
             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "email TEXT UNIQUE, " +
             "password TEXT, " +
+            "premium INTEGER DEFAULT 0, " +
             "salt TEXT, " +
             "biometric INTEGER DEFAULT 0," +
             "created_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')), " +
             "updated_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')) " +
             ")";
+
 
 
     //Definicion de variables y constantes globales
@@ -255,6 +258,7 @@ public class DbManager {
             int idIndex = cursor.getColumnIndex("id");
             int emailIndex = cursor.getColumnIndex("email");
             int pwdIndex = cursor.getColumnIndex("password");
+            int premiumIndex = cursor.getColumnIndex("premium");
             int salIndex = cursor.getColumnIndex("salt");
             int bioIndex = cursor.getColumnIndex("biometric");
 
@@ -264,11 +268,12 @@ public class DbManager {
                 int id = cursor.getInt(idIndex);
                 String userEmail = cursor.getString(emailIndex);
                 String password = cursor.getString(pwdIndex);
+                int premium = cursor.getInt(premiumIndex);
                 String sal = cursor.getString(salIndex);
                 int biometric = cursor.getInt(bioIndex);
 
                 // Crear un nuevo objeto UserResponse con los datos obtenidos
-                user = new UserResponse(id, userEmail, password, sal, biometric);
+                user = new UserResponse(id, userEmail, password, premium, sal, biometric);
             }
             // Cerrar el cursor y la base de datos
             cursor.close();
