@@ -9,7 +9,7 @@
     <View
         android:id="@+id/viewBlue"
         android:layout_width="411dp"
-        android:layout_height="245dp"
+        android:layout_height="300dp"
         android:background="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -41,7 +41,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
         android:visibility="visible"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +80,10 @@
                 android:layout_marginTop="8dp"
                 android:hint="@string/correo"
                 android:textColor="@color/greyLigth"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="@color/greyLigth"
                 app:hintTextColor="@color/greyLigth"
                 app:startIconContentDescription="Correo icon"
@@ -107,13 +107,13 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/password"
                 android:textColor="@color/greyLigth"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="@color/greyLigth"
-                app:endIconTint="@color/grey"
                 app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
                 app:errorEnabled="true"
                 app:hintTextColor="@color/greyLigth"
                 app:startIconContentDescription="Lock icon"
@@ -168,15 +168,14 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login_m"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="350dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="@color/blue"
         android:contentDescription="Toqui aqui para iniciar sesión"
         android:fontFamily="@font/poppins"
@@ -186,10 +185,9 @@
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.82"
         tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
