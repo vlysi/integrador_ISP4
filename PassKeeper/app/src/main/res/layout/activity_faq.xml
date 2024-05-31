@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_faq">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/faq_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Puedo acceder a mis contraseñas desde diferentes dispositivos?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#1090cb"/>
+
+            <TextView
+                android:id="@+id/faq_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sí, PassKeeper ofrece portabilidad total. Puedes importar y exportar tus contraseñas de manera segura entre dispositivos utilizando nuestra tecnología cloud. Esto te permite acceder a tus contraseñas en cualquier momento y desde cualquier lugar."
+                 android:paddingBottom="16dp" />
+
+            <TextView
+                android:id="@+id/faq_title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Cuáles son las ventajas de suscribirme a la versión premium de PassKeeper?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#1090cb"/>
+
+            <TextView
+                android:id="@+id/faq_answer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="La versión premium de PassKeeper ofrece características adicionales como almacenamiento ilimitado de contraseñas, acceso prioritario al soporte técnico, opciones avanzadas de recuperación de cuenta, y herramientas de seguridad adicionales para proteger tus datos. Puedes suscribirte a la versión premium directamente desde nuestro sitio web."
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:id="@+id/faq_title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿PassKeeper ofrece soporte técnico?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#1090cb"/>
+
+            <TextView
+                android:id="@+id/faq_answer3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sí, PassKeeper cuenta con un equipo de soporte técnico dedicado para ayudarte con cualquier problema o pregunta que puedas tener. Puedes contactar al soporte técnico a través de la sección de 'Contacto' en nuestra aplicación o sitio web, donde podrás enviar una solicitud y recibir asistencia personalizada."
+                android:paddingBottom="16dp" />
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
