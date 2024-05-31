@@ -43,4 +43,6 @@ dependencies {
     implementation("com.github.f0ris.sweetalert:library:1.5.6") //Para las alertas de Sweet Alert
     implementation ("org.mindrot:jbcrypt:0.4") //para hashing
     implementation ("androidx.biometric:biometric:1.2.0-alpha05") //Para la autenftificación biometrica
+    implementation("com.squareup.okhttp3:okhttp:4.12.0") //Para hacer consultas a una API externa
+
 }
