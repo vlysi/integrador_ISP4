@@ -21,7 +21,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
+            <TextView
+                android:id="@+id/faq_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PREGUNTAS FRECUENTES"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:textColor="#1090cb"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#c0c0c0"
+                android:layout_marginBottom="16dp"/>
             <TextView
                 android:id="@+id/faq_title"
                 android:layout_width="match_parent"
