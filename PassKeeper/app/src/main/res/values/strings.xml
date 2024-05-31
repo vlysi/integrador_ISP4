@@ -25,11 +25,11 @@
 
     <!--Tus Contraseñas-->
     <string name="passwords">Tus Contraseñas</string>
-    <string name="txtPasswords">No hay contraseñas  que mostrar, ¡por favor añada una!</string>
+    <string name="txtPasswords">No hay contraseñas que mostrar, ¡por favor añada una!</string>
     <string name="btn_agregar">+</string>
 
     <!--Editar Contraseña-->
-    <string name="edit_password">Editar Contraseña </string>
+    <string name="edit_password">Editar Contraseña</string>
     <string name="password_e">Contraseña</string>
     <string name="url_e">URL</string>
     <string name="description_e">Descripción</string>
