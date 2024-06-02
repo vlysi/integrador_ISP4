@@ -123,6 +123,23 @@
                 android:paddingBottom="16dp" />
 
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_new"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins"
+                android:text="Volver"
+                android:textColor="@color/white"
+                app:cardElevation="15dp"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.897"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
 
