@@ -25,7 +25,7 @@
                 android:id="@+id/faq_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PREGUNTAS FRECUENTES"
+                android:text="@string/titulo_faq"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:paddingBottom="16dp"
@@ -41,7 +41,7 @@
                 android:id="@+id/faq_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Puedo acceder a mis contraseñas desde diferentes dispositivos?"
+                android:text="@string/q1"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:paddingBottom="8dp"
@@ -51,14 +51,14 @@
                 android:id="@+id/faq_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sí, PassKeeper ofrece portabilidad total. Puedes importar y exportar tus contraseñas de manera segura entre dispositivos utilizando nuestra tecnología cloud. Esto te permite acceder a tus contraseñas en cualquier momento y desde cualquier lugar."
+                android:text="@string/a1"
                  android:paddingBottom="16dp" />
 
             <TextView
                 android:id="@+id/faq_title2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Cuáles son las ventajas de suscribirme a la versión premium de PassKeeper?"
+                android:text="@string/q2"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:paddingBottom="8dp"
@@ -68,14 +68,14 @@
                 android:id="@+id/faq_answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="La versión premium de PassKeeper ofrece características adicionales como almacenamiento ilimitado de contraseñas, acceso prioritario al soporte técnico, opciones avanzadas de recuperación de cuenta, y herramientas de seguridad adicionales para proteger tus datos. Puedes suscribirte a la versión premium directamente desde nuestro sitio web."
+                android:text="@string/a2"
                 android:paddingBottom="16dp" />
 
             <TextView
                 android:id="@+id/faq_title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿PassKeeper ofrece soporte técnico?"
+                android:text="@string/q3"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:paddingBottom="8dp"
@@ -85,7 +85,41 @@
                 android:id="@+id/faq_answer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sí, PassKeeper cuenta con un equipo de soporte técnico dedicado para ayudarte con cualquier problema o pregunta que puedas tener. Puedes contactar al soporte técnico a través de la sección de 'Contacto' en nuestra aplicación o sitio web, donde podrás enviar una solicitud y recibir asistencia personalizada."
+                android:text="@string/a3"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:id="@+id/faq_title4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/q4"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#1090cb"/>
+
+            <TextView
+                android:id="@+id/faq_answer4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/a4"
+                android:paddingBottom="16dp" />
+
+            <TextView
+                android:id="@+id/faq_title5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/q5"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"
+                android:textColor="#1090cb"/>
+
+            <TextView
+                android:id="@+id/faq_answer5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/a5"
                 android:paddingBottom="16dp" />
 
 
