@@ -25,11 +25,11 @@
 
     <!--Tus Contraseñas-->
     <string name="passwords">Tus Contraseñas</string>
-    <string name="txtPasswords">No hay contraseñas  que mostrar, ¡por favor añada una!</string>
+    <string name="txtPasswords">No hay contraseñas que mostrar, ¡por favor añada una!</string>
     <string name="btn_agregar">+</string>
 
     <!--Editar Contraseña-->
-    <string name="edit_password">Editar Contraseña </string>
+    <string name="edit_password">Editar Contraseña</string>
     <string name="password_e">Contraseña</string>
     <string name="url_e">URL</string>
     <string name="description_e">Descripción</string>
@@ -60,7 +60,7 @@
     <string name="desplazamiento_vertical_de_contrase_as">Desplazamiento vertical de contraseñas</string>
     <string name="buscar_por_nombre">Buscar por nombre</string>
     <string name="toqui_aqui_para_agregar_una_nueva_contrase_a">Toqui aqui para agregar una nueva contraseña</string>
-    <string name="agregar">+ Agregar</string>
+    <string name="agregar">Agregar</string>
     <string name="todo">Scroll</string>
 
     <!--Frequently Asked Questions-->
