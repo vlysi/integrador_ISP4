@@ -66,7 +66,7 @@
     <!--Frequently Asked Questions-->
     <string name="titulo_faq">PREGUNTAS FRECUENTES</string>
     <string name="q1">¿Puedo acceder a mis contraseñas desde diferentes dispositivos?</string>
-    <string name="a1">"Sí, PassKeeper ofrece portabilidad total. Puedes importar y exportar tus contraseñas de manera segura entre dispositivos utilizando nuestra tecnología cloud. Esto te permite acceder a tus contraseñas en cualquier momento y desde cualquier lugar."</string>
+    <string name="a1">"Actualmente, esta funcionalidad está en desarrollo. Será una característica destacada en la próxima versión premium de PassKeeper. Te permitirá importar y exportar tus contraseñas de manera segura entre dispositivos utilizando nuestra tecnología cloud, garantizando acceso en cualquier momento y desde cualquier lugar."</string>
     <string name="q2">"¿Cuáles son las ventajas de suscribirme a la versión premium de PassKeeper?"</string>
     <string name="a2">"La versión premium de PassKeeper ofrece características adicionales como almacenamiento ilimitado de contraseñas, acceso prioritario al soporte técnico, opciones avanzadas de recuperación de cuenta, y herramientas de seguridad adicionales para proteger tus datos. Puedes suscribirte a la versión premium directamente desde nuestro sitio web."</string>
     <string name="q3">"¿PassKeeper ofrece soporte técnico?"</string>
