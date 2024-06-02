@@ -10,7 +10,7 @@
     <View
         android:id="@+id/viewBlue"
         android:layout_width="wrap_content"
-        android:layout_height="365dp"
+        android:layout_height="300dp"
         android:background="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -27,13 +27,15 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:autoSizeTextType="uniform"
+        android:fontFamily="@font/poppins"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="48sp"
-        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +49,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +69,7 @@
             android:button="@drawable/fingerprint_solid"
             android:buttonTint="@color/text_accesibility"
             android:checked="true"
+            android:fontFamily="@font/poppins"
             android:showText="false"
             android:text="@string/fingerprint"
             android:textAlignment="center"
@@ -76,10 +79,13 @@
             android:textIsSelectable="false"
             android:textOff="@string/off"
             android:textOn="@string/on"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             android:thumbTint="@color/blue"
             android:visibility="visible"
             tools:visibility="visible" />
+
+
+        <!-- Inicia configuración de la caja de los inputs-->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardViewReg2"
@@ -87,11 +93,12 @@
             android:layout_height="70dp"
             android:layout_marginBottom="60dp"
             android:backgroundTint="@color/white"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="5dp"
             app:cardElevation="8dp">
 
 
             <!-- Inicia configuración del Título del registro-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,6 +106,7 @@
 
                 <!-- Boton para ir a la pagina principal -->
 
+                <!-- Texto del Título del registro-->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_home"
                     style="@style/Widget.MaterialComponents.Button"
@@ -108,7 +116,7 @@
                     android:backgroundTint="@color/blue"
                     android:contentDescription="@string/boton_guardar"
                     android:elevation="12dp"
-                    app:cornerRadius="30dp"
+                    app:cornerRadius="5dp"
                     app:icon="@drawable/arrow"
                     app:iconGravity="start"
                     app:iconSize="30dp"
@@ -117,7 +125,6 @@
                     app:iconTint="@color/white"
                     tools:ignore="MissingConstraints" />
 
-                <!-- Texto del Título del registro-->
                 <TextView
                     android:id="@+id/textTitleReg"
                     android:layout_width="wrap_content"
@@ -125,14 +132,10 @@
                     android:layout_marginStart="40dp"
                     android:text="@string/register"
                     android:textColor="@color/text_accesibility"
-                    android:textSize="30sp"
-                    android:textStyle="italic" />
+                    android:textSize="30sp" />
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
-
-        <!-- Inicia configuración de la caja de los inputs-->
         <LinearLayout
             android:layout_width="300dp"
             android:layout_height="292dp"
@@ -156,10 +159,10 @@
                 android:layout_marginTop="12dp"
                 android:hint="@string/correo"
                 android:textColor="@color/greyLigth"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="@color/greyLigth"
                 app:hintTextColor="@color/greyLigth"
                 app:startIconContentDescription="Correo icon"
@@ -170,8 +173,10 @@
                     android:id="@+id/editTextUsernameReg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:inputType="text"
                     android:textColor="@color/black" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -182,10 +187,10 @@
                 android:layout_marginTop="12dp"
                 android:hint="@string/password"
                 android:textColor="@color/greyLigth"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="@color/greyLigth"
                 app:counterEnabled="false"
                 app:counterMaxLength="20"
@@ -201,6 +206,7 @@
                     android:id="@+id/editPasswordReg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:inputType="text"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -215,10 +221,10 @@
                 android:gravity="center"
                 android:hint="@string/password2"
                 android:textColor="@color/greyLigth"
-                app:boxCornerRadiusBottomEnd="25dp"
-                app:boxCornerRadiusBottomStart="25dp"
-                app:boxCornerRadiusTopEnd="25dp"
-                app:boxCornerRadiusTopStart="25dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="@color/greyLigth"
                 app:counterEnabled="false"
                 app:endIconMode="password_toggle"
@@ -234,6 +240,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins"
                     android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -250,6 +257,7 @@
             android:layout_marginStart="110dp"
             android:layout_marginTop="470dp"
             android:contentDescription="@string/link_login"
+            android:fontFamily="@font/poppins"
             android:text="@string/login"
             android:textColor="@color/blue"
             android:textSize="16sp"
@@ -258,26 +266,25 @@
             app:layout_constraintHorizontal_bias="0.72"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
-    </com.google.android.material.card.MaterialCardView>
 
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegistrar"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="435dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="52dp"
         android:backgroundTint="@color/blue"
+        android:fontFamily="@font/poppins"
         android:text="@string/btn_register"
         android:textColor="@color/white"
         app:cardElevation="15dp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardViewReg"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
