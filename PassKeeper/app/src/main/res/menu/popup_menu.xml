@@ -3,9 +3,13 @@
     <item android:id="@+id/option_1"
           android:title="@string/op1"
           android:icon="@drawable/address_card"
-
           android:actionMenuTextAppearance="@style/MyMenuItemTextAppearance"/>
-    <item
-        android:id="@+id/option_2"
-        android:title="@string/op2" />
+    <item android:id="@+id/option_faq"
+          android:title="@string/faq"
+          android:icon="@drawable/ic_faq"
+          android:actionMenuTextAppearance="@style/MyMenuItemTextAppearance"/>
+    <item android:id="@+id/option_2"
+          android:title="@string/op2"
+          android:icon="@drawable/right_from_bracket"
+          android:actionMenuTextAppearance="@style/MyMenuItemTextAppearance"/>
 </menu>
