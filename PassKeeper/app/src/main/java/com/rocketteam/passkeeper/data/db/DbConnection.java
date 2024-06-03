@@ -14,7 +14,7 @@ import com.rocketteam.passkeeper.RegisterUserActivity;
 public class DbConnection extends SQLiteOpenHelper {
     // Nombre de la base de datos y versión
     private static final String DB_NAME = "passkeeper.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     /**
      * Constructor de la clase.

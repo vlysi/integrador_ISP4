@@ -57,13 +57,12 @@
             int bio = sharedPreferences.getInt("biometric",-1);
             Log.i("TAG", "Login Biometric: "+bio);
 
-
             if(bio == 1) {
                 boolean biometricFinger = BiometricUtils.isBiometricPromptEnabled(MainActivity.this);
                 boolean userWhitBiometric = dbManager.userWhitBiometrics();
-                Log.i("TAG", "existe usuario con biometria: "+userWhitBiometric);
+                Log.i("TAG", "onCreate de MainActivity dice: existe usuario con biometria: "+userWhitBiometric);
                 // Si el usuario ha configurado la preferencia para usar la autenticación biométrica
-                if (biometricFinger) {
+                if (biometricFinger && userWhitBiometric) {
                     // Mostrar el cuadro de diálogo de autenticación biométrica
                     this.BiometricAuth();
                 }
