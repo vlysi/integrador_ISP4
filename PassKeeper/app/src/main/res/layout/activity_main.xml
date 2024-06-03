@@ -171,10 +171,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login_m"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="92dp"
         android:backgroundTint="@color/blue"
         android:contentDescription="Toqui aqui para iniciar sesión"
@@ -185,7 +185,6 @@
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 

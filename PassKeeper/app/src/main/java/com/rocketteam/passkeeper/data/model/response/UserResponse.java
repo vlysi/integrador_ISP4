@@ -41,13 +41,12 @@ public class UserResponse {
         this.password = password;
     }
 
-    public Integer  getPremium(){
+    public Integer getPremium(){
         return premium;
     }
     public void setPremium(Integer premium) {
         this.premium = premium;
     }
-
 
     public String getSalt() {
         return salt;

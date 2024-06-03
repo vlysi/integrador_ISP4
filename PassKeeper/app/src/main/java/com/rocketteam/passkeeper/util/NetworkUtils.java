@@ -20,11 +20,15 @@ import okhttp3.Response;
 
 public class NetworkUtils {
 
+    public interface PremiumStatusCallback {
+        void onResult(boolean isPremium);
+        void onError(Exception e);
+    }
+
     /**
      * Obtiene el estado premium del usuario desde la API
      *
      * @param userEmail el correo electrónico del usuario
-     * @param callback  el objeto PremiumStatusCallback que manejará el resultado o los errores de la operación
      */
     public static void getPremiumStatusFromAPI(String userEmail, PremiumStatusCallback callback) {
 
@@ -33,7 +37,6 @@ public class NetworkUtils {
             callback.onError(new IllegalArgumentException("El email del usuario no puede ser nulo."));
             return;
         }
-
 
         // Ejecuta en  otro hilo
         ExecutorService executorService = Executors.newSingleThreadExecutor();
