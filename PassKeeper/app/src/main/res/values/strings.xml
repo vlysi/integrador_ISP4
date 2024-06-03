@@ -63,5 +63,17 @@
     <string name="agregar">Agregar</string>
     <string name="todo">Scroll</string>
 
+    <!--Frequently Asked Questions-->
+    <string name="titulo_faq">PREGUNTAS FRECUENTES</string>
+    <string name="q1">¿Puedo acceder a mis contraseñas desde diferentes dispositivos?</string>
+    <string name="a1">"Actualmente, esta funcionalidad está en desarrollo. Será una característica destacada en la próxima versión premium de PassKeeper. Te permitirá importar y exportar tus contraseñas de manera segura entre dispositivos utilizando nuestra tecnología cloud, garantizando acceso en cualquier momento y desde cualquier lugar."</string>
+    <string name="q2">"¿Cuáles son las ventajas de suscribirme a la versión premium de PassKeeper?"</string>
+    <string name="a2">"La versión premium de PassKeeper ofrece características adicionales como almacenamiento ilimitado de contraseñas, acceso prioritario al soporte técnico, opciones avanzadas de recuperación de cuenta, y herramientas de seguridad adicionales para proteger tus datos. Puedes suscribirte a la versión premium directamente desde nuestro sitio web."</string>
+    <string name="q3">"¿PassKeeper ofrece soporte técnico?"</string>
+    <string name="a3">"Sí, PassKeeper cuenta con un equipo de soporte técnico dedicado para ayudarte con cualquier problema o pregunta que puedas tener. Puedes contactar al soporte técnico a través de la sección de 'Contacto' en nuestra aplicación o sitio web, donde podrás enviar una solicitud y recibir asistencia personalizada."</string>
+    <string name="q4">"¿Cómo asegura PassKeeper mis contraseñas?"</string>
+    <string name="a4">"PassKeeper emplea algoritmos de cifrado avanzados para almacenar tus contraseñas de forma segura. Cada contraseña se encripta individualmente, y solo tú puedes acceder a ellas mediante tu contraseña maestra. Además, nuestras medidas de seguridad incluyen autenticación multifactor para añadir una capa extra de protección."</string>
+    <string name="q5">"¿PassKeeper es adecuado para empresas?"</string>
+    <string name="a5">"Sí, PassKeeper está diseñado tanto para usuarios individuales como para empresas. Ofrecemos planes de suscripción que se adaptan a las necesidades de empresas de todos los tamaños, proporcionando herramientas avanzadas de gestión de contraseñas y control de acceso para equipos."</string>
 
-</resources>
+    </resources>
