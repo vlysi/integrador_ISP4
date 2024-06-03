@@ -1,6 +1,5 @@
 package com.rocketteam.passkeeper.data.db;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,20 +18,20 @@ import com.rocketteam.passkeeper.util.NetworkUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Clase que gestiona las operaciones de base de datos relacionadas con usuarios y contraseñas.
  */
 public class DbManager {
     // Definición de las columnas de la tabla de contraseñas
-    public static final String TB_PASSWORD = "password";
     private static final String PASSWORD_ID = "id";
+    public static final String TB_PASSWORD = "password";
     public static final String PASSWORD_USERNAME = "username";
     public static final String PASSWORD_URL = "url";
     public static final String PASSWORD_KEYWORD = "keyword";
     public static final String PASSWORD_DESCRIPTION = "description";
     public static final String PASSWORD_USER = "user_id";
     public static final String PASSWORD_NAME = "name";
-
     //definicion de la tabla contraseña
     public static final String CREATE_PASSWORD_TABLE = "CREATE TABLE IF NOT EXISTS password ( " +
             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -45,10 +44,9 @@ public class DbManager {
             "created_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')), " +
             "updated_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')), " +
             "FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE)";
-
     // Definición de las columnas de la tabla de usuarios
     public static final String TB_USER = "user";
-    //public static final String ID_USER = "id";
+    public static final String ID_USER = "id";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
     public static final String PREMIUM = "premium"; // Columna para almacenar la condicion de premium
@@ -60,17 +58,16 @@ public class DbManager {
             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "email TEXT UNIQUE, " +
             "password TEXT, " +
-            "premium INTEGER DEFAULT 0, " +
             "salt TEXT, " +
+            "premium INTEGER DEFAULT 0, " +
             "biometric INTEGER DEFAULT 0," +
             "created_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')), " +
             "updated_at TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')) " +
             ")";
-
     //Definicion de variables y constantes globales
     private final DbConnection connection;
-    private SQLiteDatabase db;
     private final SharedPreferences sharedPreferences;
+    private SQLiteDatabase db;
 
     /**
      * Constructor de la clase DbManager.
@@ -122,25 +119,28 @@ public class DbManager {
             content.put(PASSWORD, hashedPassword); // Guardar el hash en la base de datos
             content.put(SALT, salt); // Guardar el salt en la base de datos
             content.put(BIO, bio); //guardar la seleccion biometrica
+            content.put(PREMIUM, 0);
 
             // Evitar el conflicto de email duplicado y no realizar el registro, pero devolver -1
             long newRowId = db.insertWithOnConflict(TB_USER, null, content, SQLiteDatabase.CONFLICT_IGNORE);
 
             //Si se registro el usuario
             if (newRowId != -1) {
-                saveStorage(-1, bio, -1);
+                saveStorage(-1, bio, 0);
             }
 
             // Si newRowId es -1, indica que hubo un conflicto y no se pudo insertar el nuevo usuario
             return newRowId != -1;
         } catch (HashUtility.SaltException e) {
             // Manejar la excepción de generación de salt
-            Log.e("Error", "Salt generation error: " + e.getMessage());
+            Log.e("DbManager", "Salt generation error: " + e.getMessage());
             throw e; // Re-lanzar la excepción para que sea manejada en un nivel superior si es necesario
         } catch (HashUtility.HashingException e) {
             // Manejar la excepción de hashing de contraseña
-            Log.e("Error", "Hashing password error: " + e.getMessage());
+            Log.e("DbManager", "Hashing password error: " + e.getMessage());
             throw e; // Re-lanzar la excepción para que sea manejada en un nivel superior si es necesario
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -163,15 +163,14 @@ public class DbManager {
                 salt = cursor.getString(saltIndex);
             } else {
                 // La columna "salt" no existe en el conjunto de resultados o el cursor está vacío
-                Log.e("Error", "No se pudo encontrar la columna 'salt'");
+                Log.e("DbManager", "No se pudo encontrar la columna 'salt'");
             }
         } catch (SQLException e) {
-            Log.e("Error", "getSaltById error de SQL "+e.getMessage());
+            Log.e("DbManager", "getSaltById error de SQL "+e.getMessage());
         } finally {
             if (cursor != null) {
                 cursor.close();
             }
-            db.close();
         }
 
         return salt;
@@ -208,17 +207,17 @@ public class DbManager {
                 return newRowId != -1;
             } else {
                 // El usuario con el ID especificado no existe
-                Log.e("Error", "No existe el usuario");
+                Log.e("DbManager", "No existe el usuario");
                 return false;
             }
         } catch (SQLException e) {
-            Log.e("TAG", "Error de SQL al registrar la contraseña: " + e.getMessage());
+            Log.e("DbManager", "Error de SQL al registrar la contraseña: " + e.getMessage());
             throw e;
         } catch (HashUtility.HashingException e) {
-            Log.e("TAG", "Error al hashear la contraseña: " + e.getMessage());
+            Log.e("DbManager", "Error al hashear la contraseña: " + e.getMessage());
             throw e;
         } catch (Exception e) {
-            Log.e("TAG", "Password registration error: " + e.getMessage());
+            Log.e("DbManager", "Password registration error: " + e.getMessage());
             throw e;
         } finally {
             db.close();
@@ -286,29 +285,27 @@ public class DbManager {
             Log.e("Error", "getUserByEmail Error al obtener el usuario por email", e);
         } finally {
             // Cerrar la base de datos y el cursor
-            if (cursor != null){
+            if (cursor != null) {
                 cursor.close();
                 db.close();
             }
         }
-
-        // Devolver el usuario encontrado (o null si no se encontró)
         return user;
     }
 
     /**
-     * Obtiene las contraseñas para un usuario específico.
-     *
-     * @param userId ID del usuario.
-     * @return Cursor con las contraseñas asociadas al usuario.
-     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
-     */
+    * Obtiene las contraseñas para un usuario específico.
+    *
+    * @param userId ID del usuario.
+    * @return Cursor con las contraseñas asociadas al usuario.
+    * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+    */
     public Cursor getPasswordsForUser(int userId) {
         try {
             String query = "SELECT * FROM password WHERE user_id = ? ORDER BY name";
             return db.rawQuery(query, new String[]{String.valueOf(userId)});
         } catch (SQLException e) {
-            Log.e("Error", "getPasswordsForUser Error de SQL: " + e.getMessage());
+            Log.e("DbManager", "Error de SQL: " + e.getMessage());
             throw e;
         }
     }
@@ -327,9 +324,9 @@ public class DbManager {
             String query = "SELECT * FROM user WHERE biometric = 1";
             cursor = db.rawQuery(query, null);
             int emailIndex = cursor.getColumnIndex("email");
-            int idIndex = cursor.getColumnIndex("id");
-            int premiumIndex = cursor.getColumnIndex("premium");
-
+            int idIndex = cursor.getColumnIndex(ID_USER);
+            int premiumIndex = cursor.getColumnIndex(PREMIUM);
+            Log.i("TAG", "userWhitBiometrics dice: IMPORTANTE el cursor da: "+cursor.moveToFirst());
             if (emailIndex != -1 && cursor.moveToFirst()) {
                 // Obtengo el string del email del usuario
                 String userEmail = cursor.getString(emailIndex);
@@ -343,19 +340,25 @@ public class DbManager {
             }
 
         } catch (SQLException e) {
-            Log.e("Error", " userWhitBiometricsError de SQL: " + e.getMessage());
-            e.printStackTrace();
+            Log.e("DbManager", "Error de SQL: " + e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         } finally {
             if (cursor != null){
-              cursor.close();
+                cursor.close();
             }
             this.close();
         }
-        return false;
+        return false;// Las credenciales son inválidas
     }
 
-    // crea una lista de contraseñas, obtenidas en un cursor en getPasswordsForUser
-
+    /**
+     * Obtiene una lista de objetos `PasswordResponse` para un usuario específico.
+     *
+     * @param userId El ID del usuario.
+     * @return Una lista de objetos `PasswordResponse` que contienen la información de las contraseñas
+     * del usuario, o `null` si ocurre un error.
+     */
     public List<PasswordResponse> getPasswordsListForUserId(int userId) {
         List<PasswordResponse> passwords = null;
         Cursor cursor = null;
@@ -371,6 +374,7 @@ public class DbManager {
             int descriptionIndex = cursor.getColumnIndex(PASSWORD_DESCRIPTION);
             int nameIndex = cursor.getColumnIndex(PASSWORD_NAME);
 
+
             if (idIndex != -1) {
                 while (cursor.moveToNext()) {
                     int id = cursor.getInt(idIndex);
@@ -384,8 +388,8 @@ public class DbManager {
                     passwords.add(passwordResponse);
                 }
             }
-        } catch (SQLException e) {
-            Log.e("Error", "getPasswordsListForUserId Error al crear lista de contraseñas"+ e.getMessage());
+        } catch (Exception e) {
+            Log.e("DbManager", "Error al crear lista de contraseñas", e.getCause());
         } finally {
             if (cursor != null) {
                 cursor.close();
@@ -409,7 +413,7 @@ public class DbManager {
             // Elimina la contraseña con el ID especificado
             db.delete(TB_PASSWORD, PASSWORD_ID + " = ?", new String[]{String.valueOf(passwordId)});
         } catch (SQLException e) {
-            Log.e("Error", "deletePassword Error al eliminar la contraseña: " + e.getMessage());
+            Log.e("DbManager", "Error al eliminar la contraseña: " + e.getMessage());
         } finally {
             // Cierra la base de datos
             this.close();
@@ -427,8 +431,7 @@ public class DbManager {
         PasswordResponse passwordResponse = null;
         Cursor cursor = null;
 
-        Log.i("TAG", "llega el id de password: "+passwordId);
-
+        Log.i("TAG", "llega el id de password: " + passwordId);
 
         try {
             // Consulta SQL para seleccionar detalles de contraseña por ID
@@ -447,7 +450,7 @@ public class DbManager {
             if (cursor.moveToFirst()) {
                 String name = cursor.getString(nameIndex);
                 String username = cursor.getString(usernameIndex);
-                String keyword = HashUtility.decrypt(cursor.getString(keywordIndex),salt);
+                String keyword = HashUtility.decrypt(cursor.getString(keywordIndex), salt);
                 String url = cursor.getString(urlIndex);
                 String description = cursor.getString(descriptionIndex);
                 Log.d("DbManager", "Name: " + name);
@@ -460,9 +463,9 @@ public class DbManager {
             }
         } catch (SQLException e) {
             // Capturar excepción en caso de error
-            Log.e("Error", "Error al obtener detalles de la contraseña: " + e.getMessage());
+            Log.e("DbManager", "Error al obtener detalles de la contraseña: " + e.getMessage());
         } catch (Exception e) {
-            Log.e("TAG", "ERROR: "+e.getMessage());
+            Log.e("DbManager", "ERROR: " + e.getMessage());
             throw new RuntimeException(e);
         } finally {
             if (cursor != null) {
@@ -490,7 +493,7 @@ public class DbManager {
             content.put(PASSWORD_NAME, updatedPassword.getName());
             content.put(PASSWORD_USERNAME, updatedPassword.getUsername());
             String salt = this.getSaltById(userId);
-            String pass = HashUtility.encrypt(updatedPassword.getKeyword(),salt);
+            String pass = HashUtility.encrypt(updatedPassword.getKeyword(), salt);
             content.put(PASSWORD_KEYWORD, pass);
             content.put(PASSWORD_URL, updatedPassword.getUrl());
             content.put(PASSWORD_DESCRIPTION, updatedPassword.getDescription());
@@ -506,15 +509,14 @@ public class DbManager {
             return rowsAffected > 0;
         } catch (SQLException e) {
             // Capturar excepción en caso de error
-            Log.e("Error", "Error al actualizar la contraseña: " + e.getMessage());
+            Log.e("DbManager", "Error al actualizar la contraseña: " + e.getMessage());
             return false;
-        }catch (Exception e){
-            Log.e("TAG", "Error: "+e.getMessage());
+        } catch (Exception e) {
+            Log.e("DbManager", "Error: " + e.getMessage());
             return false;
         } finally {
             this.close();
         }
-
     }
 
     /**
@@ -531,6 +533,7 @@ public class DbManager {
         if (userId != -1) {
             Log.i("TAG", "saveStorage: El usuario no es nulo completo userID");
             editor.putInt("userId", userId);
+            editor.apply();
         }
         // si el valor de premium es 0 verifica llamando a la API
         if (premiumValue == 0) {
@@ -650,5 +653,6 @@ public class DbManager {
             this.close();
         }
     }
-}
 
+    //Fin DbManager
+}
