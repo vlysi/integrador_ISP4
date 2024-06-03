@@ -513,6 +513,28 @@ public class DbManager {
         }
 
     }
+ public int getNumberOfPasswordsForUser(int userId) throws SQLException {
+        int count = 0;
+        Cursor cursor = null;
 
+        try {
+            // cuanta la cantidad de resgistros en la tabla password donde el usuario sea el que le paso como parametro
+            String query = "SELECT COUNT(*) FROM password WHERE user_id = ?";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } catch (SQLException e) {
+            Log.e("Error al consultar registros", "Error: " + e.getMessage());
+            return 0;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return count;
+    }
 
 }
