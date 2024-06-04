@@ -112,7 +112,7 @@ public class RegisterUserActivity extends AppCompatActivity {
             textInputLayoutEmail.setError("El email es necesario");
             return false;
         } else if (!email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
-            textInputLayoutEmail.setError("Por favor, ingresa un correo electrónico válido");
+            textInputLayoutEmail.setError("Correo electrónico inválido");
             return false;
         }
         // Validación de las contraseñas
