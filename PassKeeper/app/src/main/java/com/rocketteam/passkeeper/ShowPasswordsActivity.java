@@ -118,6 +118,11 @@ public class ShowPasswordsActivity extends AppCompatActivity {
                     Intent intent1 = new Intent(ShowPasswordsActivity.this, activity_faq.class);
                     startActivity(intent1);
                     return true;
+                }else if (itemId == R.id.option_contact) {
+                    // Abre la actividad preguntas frecuentes
+                    Intent intent1 = new Intent(ShowPasswordsActivity.this, ContactActivity.class);
+                    startActivity(intent1);
+                    return true;
                 }
                 else if (itemId == R.id.option_2) {
                     this.onBackPressed();
