@@ -128,9 +128,10 @@ public class RegisterPasswordActivity extends AppCompatActivity {
             //obtengo el ID del usuario logueado
             SharedPreferences sharedPreferences = getSharedPreferences("Storage", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("userId", -1);
-            //boolean isPremium = sharedPreferences.getBoolean("isPremium", false);
-            boolean isPremium = false;
+            boolean isPremium = dbManager.isUserPremium(userId);
             Log.i("TAG", "UserId desde addPassword: "+userId);
+            Log.i("TAG", "IsPremium desde addPassword: "+isPremium);
+
             PasswordCredentials password = null;
             if (userId != -1) {
                 password = new PasswordCredentials(
@@ -157,8 +158,10 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                 });
                 }
             } else {
-                // Verificar cuota de usuario gratuito (menos de 10)
+                // en el caso de que no sea premium
                 int freeQuota = dbManager.getNumberOfPasswordsForUser(userId);
+
+                // Verificar cuota de usuario gratuito (menos de 10)
                 if (freeQuota < 10) {
                     // Guardar contraseña para usuarios gratuitos dentro del limite
                     if (dbManager.passwordRegister(password)) {
@@ -172,7 +175,7 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                     }
                 } else {
                     // Mostrar advertencia por exceder el limite
-                    mostrarSweetAlert(this, 1, "Límite Alcanzado", "Ha alcanzado el límite de contraseñas gratuitas. Actualice a Premium para guardar más.", null);
+                    ShowAlertsUtility.mostrarSweetAlert(this, 1, "Límite Alcanzado", "Ha alcanzado el límite de contraseñas gratuitas. Actualice a Premium para guardar más.", null);
                 }
             }
         } catch (SQLiteException e) {
