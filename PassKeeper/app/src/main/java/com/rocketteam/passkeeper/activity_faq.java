@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.google.android.material.button.MaterialButton;
+import android.content.Intent;
 
 public class activity_faq extends AppCompatActivity {
 
@@ -19,6 +21,13 @@ public class activity_faq extends AppCompatActivity {
             Insets barrasSistema = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(barrasSistema.left, barrasSistema.top, barrasSistema.right, barrasSistema.bottom);
             return insets;
+        });
+
+        // Configuración del botón que vuelve a home.
+        MaterialButton btnNew = findViewById(R.id.btn_new);
+        btnNew.setOnClickListener(v -> {
+            Intent intent = new Intent(activity_faq.this, ShowPasswordsActivity.class);
+            startActivity(intent);
         });
     }
 }
