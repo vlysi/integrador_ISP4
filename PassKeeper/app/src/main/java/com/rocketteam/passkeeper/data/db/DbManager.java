@@ -518,7 +518,52 @@ public class DbManager {
             this.close();
         }
     }
+    public boolean isUserPremium(int userId) throws SQLException {
+    boolean isPremium = false; // por defecto estara en false
+    Cursor cursor = null;
 
+    try {
+        // consulta del campo premium de la tabla password donde el user_id =?
+        String query = "SELECT premium FROM user WHERE id = ?";
+        cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+
+        if (cursor.moveToFirst()) {
+            isPremium = cursor.getInt(0) == 1; // si es 1 el true si es 0 es false
+        }
+    } catch (SQLException e) {
+        Log.e("Error al verificar estado Premium", "Error: " + e.getMessage());
+    } finally {
+        if (cursor != null) {
+            cursor.close();
+        }
+    }
+
+    return isPremium;
+}
+
+ public int getNumberOfPasswordsForUser(int userId) throws SQLException {
+        int count = 0;
+        Cursor cursor = null;
+
+        try {
+            // cuanta la cantidad de resgistros en la tabla password donde el usuario sea el que le paso como parametro
+            String query = "SELECT COUNT(*) FROM password WHERE user_id = ?";
+            cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } catch (SQLException e) {
+            Log.e("Error al consultar registros", "Error: " + e.getMessage());
+            return 0;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+
+        return count;
+    }
     /**
      * Guarda los datos de usuario en SharedPreferences.
      *

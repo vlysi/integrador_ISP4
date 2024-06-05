@@ -128,7 +128,10 @@ public class RegisterPasswordActivity extends AppCompatActivity {
             //obtengo el ID del usuario logueado
             SharedPreferences sharedPreferences = getSharedPreferences("Storage", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("userId", -1);
+            boolean isPremium = dbManager.isUserPremium(userId);
             Log.i("TAG", "UserId desde addPassword: "+userId);
+            Log.i("TAG", "IsPremium desde addPassword: "+isPremium);
+
             PasswordCredentials password = null;
             if (userId != -1) {
                 password = new PasswordCredentials(
@@ -139,10 +142,13 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                         Objects.requireNonNull(editTextName.getText()).toString(),
                         userId
                 );
-            }
 
-            if (dbManager.passwordRegister(password)) {
-                // Mostrar un SweetAlertDialog para el registro exitoso de la contraseña
+            }
+               // Verificar estado Premium
+            if (isPremium) {
+                // Guardar contraseña directamente para usuarios Premium
+                if (dbManager.passwordRegister(password)) {
+                  // Mostrar un SweetAlertDialog para el registro exitoso de la contraseña
                 ShowAlertsUtility.mostrarSweetAlert(this, 2, "Registro exitoso", "El Password ha sido registrado correctamente", sweetAlertDialog -> {
                     sweetAlertDialog.dismissWithAnimation();
                     // Redirigir al usuario a la página de PasswordActivity
@@ -150,6 +156,27 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 });
+                }
+            } else {
+                // en el caso de que no sea premium
+                int freeQuota = dbManager.getNumberOfPasswordsForUser(userId);
+
+                // Verificar cuota de usuario gratuito (menos de 10)
+                if (freeQuota < 10) {
+                    // Guardar contraseña para usuarios gratuitos dentro del limite
+                    if (dbManager.passwordRegister(password)) {
+                        ShowAlertsUtility.mostrarSweetAlert(this, 2, "Registro exitoso", "El Password ha sido registrado correctamente", sweetAlertDialog -> {
+                    sweetAlertDialog.dismissWithAnimation();
+                    // Redirigir al usuario a la página de PasswordActivity
+                    Intent intent = new Intent(RegisterPasswordActivity.this, ShowPasswordsActivity.class);
+                    startActivity(intent);
+                    finish();
+                });
+                    }
+                } else {
+                    // Mostrar advertencia por exceder el limite
+                    ShowAlertsUtility.mostrarSweetAlert(this, 1, "Límite Alcanzado", "Ha alcanzado el límite de contraseñas gratuitas. Actualice a Premium para guardar más.", null);
+                }
             }
         } catch (SQLiteException e) {
             // Mostrar un SweetAlertDialog para errores de base de datos
