@@ -47,6 +47,8 @@
     <string name="op1">About</string>
     <string name="op2">Cerrar Sesión</string>
     <string name="faq">FAQ</string>
+    <string name="terms">Terms Conditions</string>
+
 
     <!--Splash-->
     <string name="autenticación">Autenticación</string>

@@ -119,6 +119,12 @@ public class ShowPasswordsActivity extends AppCompatActivity {
                     startActivity(intent1);
                     return true;
                 }
+                else if (itemId == R.id.option_terms) {
+                // Abre la actividad terminos y condiciones
+                Intent intent1 = new Intent(ShowPasswordsActivity.this, TermsConditionsActivity.class);
+                startActivity(intent1);
+                return true;
+                }
                 else if (itemId == R.id.option_2) {
                     this.onBackPressed();
                     return true;
