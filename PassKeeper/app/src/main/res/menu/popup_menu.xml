@@ -11,6 +11,9 @@
     <item android:id="@+id/option_terms"
         android:title="@string/terms"
         android:icon="@drawable/circle_exclamation_solid"
+    <item android:id="@+id/option_contact"
+        android:title="@string/contacto"
+        android:icon="@drawable/ic_faq"
         android:actionMenuTextAppearance="@style/MyMenuItemTextAppearance"/>
     <item android:id="@+id/option_2"
           android:title="@string/op2"
