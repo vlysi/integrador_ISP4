@@ -199,7 +199,7 @@ public class ShowPasswordsActivity extends AppCompatActivity {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {
-            Log.e("TAG", "ERROR: " + e.getMessage());
+            Log.e("Error", "ERROR: " + e.getMessage());
         }
     }
 

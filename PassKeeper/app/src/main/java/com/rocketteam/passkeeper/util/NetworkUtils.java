@@ -62,7 +62,7 @@ public class NetworkUtils {
 
                 // El cuerpo de la respuesta lo pasa a un string
                 String responseBody = response.body().string();
-                Log.i("TAG", "NetworkUtils: respuesta de API: " + responseBody);
+                Log.i("TAG", "NetworkUtils getPremiumStatusFromAPI: respuesta de API: " + responseBody);
 
                 // Verifica si la respuesta fue exitosa
                 if (response.isSuccessful()) {
@@ -102,7 +102,7 @@ public class NetworkUtils {
 
             try (Response response = client.newCall(request).execute()) {
                 String responseBody = response.body().string();
-                Log.i("TAG", "NetworkUtils: respuesta de API: " + responseBody);
+                Log.i("TAG", "NetworkUtils sendQuery: respuesta de API: " + responseBody);
 
                 if (response.isSuccessful()) {
                     handler.post(() -> callback.onSuccess(responseBody));

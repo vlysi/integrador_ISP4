@@ -44,9 +44,9 @@
     <!--<string name="last_date"> 28/09/2023</string>-->
 
     <!--Menu Popup-->
-    <string name="op1">About</string>
+    <string name="op1">Nosotros</string>
     <string name="op2">Cerrar Sesión</string>
-    <string name="faq">FAQ</string>
+    <string name="faq">Preguntas frecuentes</string>
     <string name="contacto">Contacto</string>
     <!--contacto-->
     <string name="enviar">Enviar</string>

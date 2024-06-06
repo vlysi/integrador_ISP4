@@ -1,20 +1,24 @@
 package com.rocketteam.passkeeper;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.TextView;
-import android.content.Intent;
-import com.google.android.material.textfield.TextInputEditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.button.MaterialButton;
-import android.content.SharedPreferences;
+import com.google.android.material.textfield.TextInputEditText;
+import com.rocketteam.passkeeper.data.db.DbManager;
 import com.rocketteam.passkeeper.util.NetworkUtils;
 import com.rocketteam.passkeeper.util.ShowAlertsUtility;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ContactActivity extends AppCompatActivity {
+    private DbManager dbManager;
     private TextView textViewEmail;
     private TextView textViewContact;
     private TextInputEditText editTextQuery;
@@ -30,9 +34,12 @@ public class ContactActivity extends AppCompatActivity {
         btnSendQuery = findViewById(R.id.btnSendQuery);
         btnBack = findViewById(R.id.btnBack);
 
-        // Carga el email desde SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("UserLogin", MODE_PRIVATE);
-        String userEmail = sharedPreferences.getString("UserEmail", "No Email Found");
+        dbManager = new DbManager(getApplicationContext());
+
+        // Carga el email desde dbManager con sharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("Storage", MODE_PRIVATE);
+        String userEmail = dbManager.getEmailById(sharedPreferences.getInt("userId", -1));
+
         textViewEmail.setText(userEmail);
 
         btnSendQuery.setOnClickListener(new View.OnClickListener() {
