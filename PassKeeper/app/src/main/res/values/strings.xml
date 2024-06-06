@@ -46,18 +46,12 @@
     <!--Menu Popup-->
     <string name="op1">Nosotros</string>
     <string name="op2">Cerrar Sesión</string>
-<<<<<<< HEAD
-    <string name="faq">FAQ</string>
-    <string name="terms">Terms Conditions</string>
-
-
-=======
+    <string name="terms">Términos y Condiciones</string>
     <string name="faq">Preguntas frecuentes</string>
     <string name="contacto">Contacto</string>
     <!--contacto-->
     <string name="enviar">Enviar</string>
     <string name="consultaHint">Escriba su consulta</string>
->>>>>>> c3b68f6d927f7a56cb584937e4274c936e8bdaea
     <!--Splash-->
     <string name="autenticación">Autenticación</string>
     <string name="regresar_a_la_pantalla_anterior">Regresar a la pantalla anterior</string>
