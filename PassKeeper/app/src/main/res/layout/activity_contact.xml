@@ -7,81 +7,185 @@
     android:background="@color/white"
     tools:context=".ContactActivity">
 
-    <TextView
-        android:id="@+id/textViewContact"
+
+<View
+        android:id="@+id/viewBlue"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="300dp"
+        android:background="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/contacto"
-        android:textColor="#1090cb"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        app:layout_constraintVertical_bias="0" />
 
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="331dp"
+        android:layout_height="595dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewContact"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:visibility="gone"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutQuery"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewContact"
-        app:hintTextColor="@color/greyLigth"
-        app:boxStrokeColor="@color/greyLigth"
-        android:hint="@string/consultaHint">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView2"
+            android:layout_width="330dp"
+            android:layout_height="70dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="8dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextQuery"
-            android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBack"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@color/blue"
+                    android:contentDescription="@string/regresar_a_la_pantalla_anterior"
+                    android:elevation="12dp"
+                    app:cornerRadius="5dp"
+                    app:icon="@drawable/arrow"
+                    app:iconGravity="start"
+                    app:iconSize="30dp"
+                    app:iconTint="@color/white"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/textTitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center_horizontal"
+                    android:lines="1"
+                    android:text="@string/contacto"
+                    android:textColor="@color/text_accesibility"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:maxLines="6"
-            android:minLines="5"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSendQuery"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/enviar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutQuery"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white" />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="450dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBack"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/atras"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSendQuery"
-        android:backgroundTint="@color/grey"
-        android:textColor="@color/white" />
+            <!-- Primer campo de entrada -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/nombre"
+                android:textColor="@color/greyLigth"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeColor="@color/greyLigth"
+                app:hintTextColor="@color/greyLigth"
+                app:startIconContentDescription="nombre icon"
+
+                app:startIconTint="@color/blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contactName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/address_card"
+                    android:drawablePadding="7dp"
+                    android:drawableTint="@color/my_dark_primary"
+                    android:fontFamily="@font/poppins"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:hintTextColor="@color/greyLigth" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="254dp"
+
+                android:textColor="@color/greyLigth"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeColor="@color/greyLigth"
+                app:hintTextColor="@color/greyLigth"
+                app:startIconContentDescription="descripcion icon"
+                app:startIconDrawable="@drawable/descripcion"
+                app:startIconTint="@color/blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextQuery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/consultaHint"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="6"
+                    android:minLines="5"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:boxStrokeColor="@color/greyLigth"
+                    app:hintTextColor="@color/greyLigth" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendQuery"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/blue"
+                android:text="@string/enviar"
+                android:textColor="@color/white"
+                app:cardElevation="15dp"
+                app:cornerRadius="5dp"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -81,7 +81,7 @@ public class NetworkUtils {
             }
         });
     }
-    public static void sendQuery(String email, String message, NetworkCallback callback) {
+    public static void sendQuery(String name, String email, String message, NetworkCallback callback) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -89,7 +89,7 @@ public class NetworkUtils {
             OkHttpClient client = new OkHttpClient();
 
             RequestBody body = new FormBody.Builder()
-                    .add("name", "usuario")
+                    .add("name", name != null ? name : "usuario")
                     .add("last_name", "android")
                     .add("email", email)
                     .add("message", message)
