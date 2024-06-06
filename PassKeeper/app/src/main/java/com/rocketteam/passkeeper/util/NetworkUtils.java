@@ -62,7 +62,7 @@ public class NetworkUtils {
 
                 // El cuerpo de la respuesta lo pasa a un string
                 String responseBody = response.body().string();
-                Log.i("TAG", "NetworkUtils: respuesta de API: " + responseBody);
+                Log.i("TAG", "NetworkUtils getPremiumStatusFromAPI: respuesta de API: " + responseBody);
 
                 // Verifica si la respuesta fue exitosa
                 if (response.isSuccessful()) {
@@ -80,5 +80,43 @@ public class NetworkUtils {
                 handler.post(() -> callback.onError(e));
             }
         });
+    }
+    public static void sendQuery(String email, String message, NetworkCallback callback) {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executorService.execute(() -> {
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody body = new FormBody.Builder()
+                    .add("name", "usuario")
+                    .add("last_name", "android")
+                    .add("email", email)
+                    .add("message", message)
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url("https://drf-passkeeper.onrender.com/contact/messages/")
+                    .post(body)
+                    .build();
+
+            try (Response response = client.newCall(request).execute()) {
+                String responseBody = response.body().string();
+                Log.i("TAG", "NetworkUtils sendQuery: respuesta de API: " + responseBody);
+
+                if (response.isSuccessful()) {
+                    handler.post(() -> callback.onSuccess(responseBody));
+                } else {
+                    handler.post(() -> callback.onError(new Exception("Error en la respuesta: " + response.code())));
+                }
+            } catch (IOException e) {
+                handler.post(() -> callback.onError(e));
+            }
+        });
+    }
+
+    public interface NetworkCallback {
+        void onSuccess(String result);
+        void onError(Exception e);
     }
 }
