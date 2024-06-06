@@ -19,7 +19,6 @@
     <string name="login">¿Ya tiene una cuenta?</string>
     <string name="link_login">Toque aquí para registrarse si ya tiene una cuenta</string>
 
-
     <!-- Usados exclusivamente en el registro -->
     <string name="btn_register">Registrarse</string>
 
@@ -49,9 +48,11 @@
     <string name="terms">Términos y Condiciones</string>
     <string name="faq">Preguntas frecuentes</string>
     <string name="contacto">Contacto</string>
+
     <!--contacto-->
     <string name="enviar">Enviar</string>
     <string name="consultaHint">Escriba su consulta</string>
+  
     <!--Splash-->
     <string name="autenticación">Autenticación</string>
     <string name="regresar_a_la_pantalla_anterior">Regresar a la pantalla anterior</string>

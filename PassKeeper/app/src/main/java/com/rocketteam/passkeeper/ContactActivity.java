@@ -29,7 +29,7 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         textViewEmail = findViewById(R.id.textViewEmail);
-        textViewContact = findViewById(R.id.textViewContact);
+        textViewContact = findViewById(R.id.contactName);
         editTextQuery = findViewById(R.id.editTextQuery);
         btnSendQuery = findViewById(R.id.btnSendQuery);
         btnBack = findViewById(R.id.btnBack);
@@ -46,8 +46,9 @@ public class ContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String query = editTextQuery.getText().toString().trim();
+                String name = textViewContact.getText().toString().trim();
                 if (!query.isEmpty()) {
-                    NetworkUtils.sendQuery(userEmail, query, new NetworkUtils.NetworkCallback() {
+                    NetworkUtils.sendQuery(name, userEmail, query, new NetworkUtils.NetworkCallback() {
                         @Override
                         public void onSuccess(String result) {
                             ShowAlertsUtility.mostrarSweetAlert(ContactActivity.this, SweetAlertDialog.SUCCESS_TYPE, "Mensaje enviado", "Mensaje enviado correctamente", sweetAlertDialog -> {
