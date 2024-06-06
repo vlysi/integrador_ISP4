@@ -2,11 +2,13 @@ package com.rocketteam.passkeeper;
 
 
 import static com.rocketteam.passkeeper.util.ShowAlertsUtility.mostrarSweetAlert;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import com.rocketteam.passkeeper.data.model.request.PasswordCredentials;
 import com.rocketteam.passkeeper.util.HashUtility;
 import com.rocketteam.passkeeper.util.InputTextWatcher;
 import com.rocketteam.passkeeper.util.ShowAlertsUtility;
+
 
 import java.util.Objects;
 
@@ -128,6 +131,7 @@ public class RegisterPasswordActivity extends AppCompatActivity {
             //obtengo el ID del usuario logueado
             SharedPreferences sharedPreferences = getSharedPreferences("Storage", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("userId", -1);
+            Log.i("TAG","LLega " + sharedPreferences.getAll());
             boolean isPremium = dbManager.isUserPremium(userId);
             Log.i("TAG", "UserId desde addPassword: "+userId);
             Log.i("TAG", "IsPremium desde addPassword: "+isPremium);
@@ -175,9 +179,29 @@ public class RegisterPasswordActivity extends AppCompatActivity {
                     }
                 } else {
                     // Mostrar advertencia por exceder el limite
-                    ShowAlertsUtility.mostrarSweetAlert(this, 1, "Límite Alcanzado", "Ha alcanzado el límite de contraseñas gratuitas. Actualice a Premium para guardar más.", null);
+  ShowAlertsUtility.mostrarSweetAlertDeletePassword(RegisterPasswordActivity.this, 3, "Limite Alcanzado", "Obtenga el premium para guardar registros ilimitados y mucho mas!",
+                    sweetAlertDialog2 -> {
+                        // Acción de confirmación (Aceptar)
+                        try {
+
+                          // Crea un Intent para abrir el navegador con un link por defecto
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ang-pass-keeper.vercel.app"));
+            startActivity(browserIntent);
+                          sweetAlertDialog2.dismissWithAnimation();
+                        } catch (Exception e) {
+                            ShowAlertsUtility.mostrarSweetAlert(RegisterPasswordActivity.this, 1, "Error", "Se ha producido un error", SweetAlertDialog::dismissWithAnimation);
+                        }
+                    },
+                    sweetAlertDialog2 -> {
+                        // Acción de cancelación (Cancelar)
+                        ShowAlertsUtility.mostrarSweetAlert(RegisterPasswordActivity.this, 1, "Operación Cancelada", "Se ha cancelado la operación", SweetAlertDialog::dismissWithAnimation);
+                    }
+            );
                 }
             }
+
+
+
         } catch (SQLiteException e) {
             // Mostrar un SweetAlertDialog para errores de base de datos
             mostrarSweetAlert(this, 1, ERROR, "Fallo el registro en la base de datos",null);
