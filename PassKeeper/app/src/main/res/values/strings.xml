@@ -19,7 +19,6 @@
     <string name="login">¿Ya tiene una cuenta?</string>
     <string name="link_login">Toque aquí para registrarse si ya tiene una cuenta</string>
 
-
     <!-- Usados exclusivamente en el registro -->
     <string name="btn_register">Registrarse</string>
 
@@ -44,10 +43,16 @@
     <!--<string name="last_date"> 28/09/2023</string>-->
 
     <!--Menu Popup-->
-    <string name="op1">About</string>
+    <string name="op1">Nosotros</string>
     <string name="op2">Cerrar Sesión</string>
-    <string name="faq">FAQ</string>
+    <string name="terms">Términos y Condiciones</string>
+    <string name="faq">Preguntas frecuentes</string>
+    <string name="contacto">Contacto</string>
 
+    <!--contacto-->
+    <string name="enviar">Enviar</string>
+    <string name="consultaHint">Escriba su consulta</string>
+  
     <!--Splash-->
     <string name="autenticación">Autenticación</string>
     <string name="regresar_a_la_pantalla_anterior">Regresar a la pantalla anterior</string>
@@ -76,4 +81,4 @@
     <string name="q5">"¿PassKeeper es adecuado para empresas?"</string>
     <string name="a5">"Sí, PassKeeper está diseñado tanto para usuarios individuales como para empresas. Ofrecemos planes de suscripción que se adaptan a las necesidades de empresas de todos los tamaños, proporcionando herramientas avanzadas de gestión de contraseñas y control de acceso para equipos."</string>
 
-    </resources>
+</resources>

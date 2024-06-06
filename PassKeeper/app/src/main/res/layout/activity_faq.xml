@@ -20,128 +20,131 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="30dp">
+
             <TextView
                 android:id="@+id/faq_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titulo_faq"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:paddingBottom="16dp"
                 android:gravity="center"
-                android:textColor="#1090cb"/>
+                android:paddingBottom="16dp"
+                android:text="@string/titulo_faq"
+                android:textColor="#1090cb"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#c0c0c0"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:background="#c0c0c0" />
+
             <TextView
                 android:id="@+id/faq_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q1"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:paddingBottom="8dp"
-                android:textColor="#1090cb"/>
+                android:text="@string/q1"
+                android:textColor="#1090cb"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/faq_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a1"
-                 android:paddingBottom="16dp" />
+                android:paddingBottom="16dp"
+                android:text="@string/a1" />
 
             <TextView
                 android:id="@+id/faq_title2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q2"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:paddingBottom="8dp"
-                android:textColor="#1090cb"/>
+                android:text="@string/q2"
+                android:textColor="#1090cb"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/faq_answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a2"
-                android:paddingBottom="16dp" />
+                android:paddingBottom="16dp"
+                android:text="@string/a2" />
 
             <TextView
                 android:id="@+id/faq_title3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q3"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:paddingBottom="8dp"
-                android:textColor="#1090cb"/>
+                android:text="@string/q3"
+                android:textColor="#1090cb"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/faq_answer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a3"
-                android:paddingBottom="16dp" />
+                android:paddingBottom="16dp"
+                android:text="@string/a3" />
 
             <TextView
                 android:id="@+id/faq_title4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q4"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:paddingBottom="8dp"
-                android:textColor="#1090cb"/>
+                android:text="@string/q4"
+                android:textColor="#1090cb"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/faq_answer4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a4"
-                android:paddingBottom="16dp" />
+                android:paddingBottom="16dp"
+                android:text="@string/a4" />
 
             <TextView
                 android:id="@+id/faq_title5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q5"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:paddingBottom="8dp"
-                android:textColor="#1090cb"/>
+                android:text="@string/q5"
+                android:textColor="#1090cb"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/faq_answer5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a5"
-                android:paddingBottom="16dp" />
+                android:paddingBottom="16dp"
+                android:text="@string/a5" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_new"
                 style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/blue"
                 android:fontFamily="@font/poppins"
+                android:insetLeft="20dp"
+                android:insetRight="5dp"
                 android:text="Volver"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                app:cardElevation="15dp"
+                app:cardElevation="16dp"
                 app:cornerRadius="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.897"
+                app:layout_constraintHorizontal_bias="8"
                 app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
         </LinearLayout>

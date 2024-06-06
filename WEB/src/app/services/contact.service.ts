@@ -22,5 +22,9 @@ export class ContactService {
   getMessages(): Observable<any[]> {
     return this.http.get<any[]>(this.contactUrl);
   }
+  deleteMessage(id: number): Observable<any> {
+    const url = `${this.contactUrl}${id}/`;
+    return this.http.delete<any>(url);
+  }
 
 }

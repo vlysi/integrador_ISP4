@@ -118,6 +118,17 @@ public class ShowPasswordsActivity extends AppCompatActivity {
                     Intent intent1 = new Intent(ShowPasswordsActivity.this, activity_faq.class);
                     startActivity(intent1);
                     return true;
+                }else if (itemId == R.id.option_contact) {
+                    // Abre la actividad preguntas frecuentes
+                    Intent intent1 = new Intent(ShowPasswordsActivity.this, ContactActivity.class);
+                    startActivity(intent1);
+                    return true;
+                }
+                else if (itemId == R.id.option_terms) {
+                // Abre la actividad terminos y condiciones
+                Intent intent1 = new Intent(ShowPasswordsActivity.this, TermsConditionsActivity.class);
+                startActivity(intent1);
+                return true;
                 }
                 else if (itemId == R.id.option_2) {
                     this.onBackPressed();
@@ -194,7 +205,7 @@ public class ShowPasswordsActivity extends AppCompatActivity {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (Exception e) {
-            Log.e("TAG", "ERROR: " + e.getMessage());
+            Log.e("Error", "ERROR: " + e.getMessage());
         }
     }
 

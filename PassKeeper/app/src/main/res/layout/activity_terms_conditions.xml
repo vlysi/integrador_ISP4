@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TermsConditionsActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:contentDescription="logo de la empresa"
+                app:srcCompat="@mipmap/ic_passkeeper_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/title_t_and_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text='Términos y Condiciones de Uso de la Aplicación Móvil "PassKeeper"'
+                android:textColor="#1090cb"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="16dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:id="@+id/content_t_and_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:justificationMode="inter_word"
+                android:text= '1. Aceptación de los Términos: Al utilizar la aplicación móvil "PassKeeper" (en adelante, "la Aplicación"), usted acepta y se compromete a cumplir con estos términos y condiciones de uso (en adelante, "los Términos"). Si no está de acuerdo con alguno de los términos establecidos aquí, por favor absténgase de utilizar la Aplicación.\n2. Uso de la Aplicación: La Aplicación está diseñada para ayudar a los usuarios a gestionar y proteger sus contraseñas de manera segura. Usted se compromete a utilizar la Aplicación únicamente con fines legales y de acuerdo con estos Términos.\n3. Seguridad de la Información: Entendemos la importancia de la seguridad de la información personal y confidencial. Nos comprometemos a implementar medidas de seguridad razonables para proteger los datos de los usuarios almacenados en la Aplicación. Sin embargo, no podemos garantizar la seguridad absoluta de la información transmitida a través de internet o almacenada en nuestros servidores.\n4. Responsabilidad del Usuario: Usted es responsable de mantener la confidencialidad de su información de inicio de sesión y de proteger su cuenta de acceso a la Aplicación. No comparta su contraseña con terceros y tome las medidas necesarias para evitar accesos no autorizados a su cuenta.\n5. Uso de Datos: No compartimos ni recopilamos datos personales, excepto su dirección de correo electrónico. Al utilizar la Aplicación, usted otorga su consentimiento para la recopilación, procesamiento y almacenamiento de su dirección de correo electrónico únicamente con el fin de mejorar la funcionalidad y seguridad de la Aplicación.\n6. Limitación de Responsabilidad: En ningún caso seremos responsables por daños directos, indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso o la imposibilidad de utilizar la Aplicación.\n7. Modificaciones de los Términos: Nos reservamos el derecho de actualizar o modificar estos Términos en cualquier momento sin previo aviso. Le recomendamos revisar periódicamente estos Términos para estar al tanto de cualquier cambio. El uso continuado de la Aplicación después de la publicación de cambios constituirá su aceptación de los mismos.\n8. Ley Aplicable: Estos Términos se regirán e interpretarán de acuerdo con las leyes del país en el que se encuentre registrada la empresa desarrolladora de la Aplicación.\n\nAl utilizar la Aplicación, usted acepta y se compromete a cumplir con estos Términos. Si tiene alguna pregunta o inquietud sobre estos Términos, por favor contáctenos a través de los canales de soporte proporcionados en la Aplicación.\n'
+
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="16dp"
+                android:background="#c0c0c0" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_terms"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins"
+                android:insetLeft="20dp"
+                android:insetRight="5dp"
+                android:text="Volver"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:cardElevation="16dp"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="8"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

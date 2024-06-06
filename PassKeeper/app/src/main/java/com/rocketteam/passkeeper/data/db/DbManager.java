@@ -629,7 +629,7 @@ public class DbManager {
      * @param userId El ID del usuario cuyo correo electrónico se desea obtener.
      * @return El correo electrónico del usuario o null si no se encuentra en la base de datos.
      */
-    private String getEmailById(int userId) {
+    public String getEmailById(int userId) {
         // Registra en el log la llegada del ID de usuario
         Log.i("TAG", "getEmailById llega el ID: " + userId);
 
