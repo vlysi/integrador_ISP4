@@ -29,5 +29,15 @@ export class TableMessageComponent implements OnInit {
     );
     
   }
+  deleteMessage(id: number): void {
+    this.contactService.deleteMessage(id).subscribe(
+      () => {
+        this.messages = this.messages.filter(message => message.id !== id);
+      },
+      (error: any) => {
+        console.error('Error al eliminar el mensaje:', error);
+      }
+    );
+  }
   
 }
