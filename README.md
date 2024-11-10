@@ -31,6 +31,10 @@ La aplicación móvil PassKeeper se desarrolló utilizando las siguientes tecnol
 - Entorno de desarrollo integrado (IDE): Android Studio
 - Base de datos: SQLite
 
+<p align="center">
+  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/4bfbeb8c-d269-45f5-9508-65e377cae729" style="width: 100" height="400">
+  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/78bbda29-e4ea-4049-a935-deef5c27b772" style="width: 100" height="400">
+</p>
   
 
 La aplicacion Web se desarrolló con las tecnologías:
@@ -42,11 +46,6 @@ Stack DAM (Django-Angular-MySQL)
 - Angular
 - MySQL
 
-
-<p align="center">
-  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/4bfbeb8c-d269-45f5-9508-65e377cae729" style="width: 100" height="400">
-  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/78bbda29-e4ea-4049-a935-deef5c27b772" style="width: 100" height="400">
-</p>
 
 ---
 
