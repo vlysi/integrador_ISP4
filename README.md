@@ -1,18 +1,8 @@
+<p align="center">
+  <img src="https://res.cloudinary.com/dodrjorpz/image/upload/v1731270814/HeroHomepage_2880x1200.width-1200.format-webp_dc80fd.webp" alt="LogoAndroid" width="50%" height="170">
+</p>  
+
 <h1 align="center">PassKeeper</h1>
-
-<p align="center">
- <a href="https://www.ispc.edu.ar/"><img src="https://user-images.githubusercontent.com/85143329/233746625-17802d1b-3bec-4d9a-9f11-644e342da582.png" style="width: 150px"></a>
-</p>
-<h3 align="center">Instituto Superior Politécnico Córdoba</h3>
-<h3 align="center">Tecnicatura Superior en Desarrollo Web y Aplicaciones Digitales</h3>
-<h4 align="center">Proyecto Integrador 2024 - Cohorte 2022</h4>
-
-# 
-
-<p align="center">
- <a href="https://github.com/soleforna/integrador_ISP3"><img src="https://user-images.githubusercontent.com/85143329/233748267-eec28e52-f959-4fa0-b9b6-f0a497aeb0d2.png" style="width: 150px"></a>
-</p>
-<h4 align="center">ROCKET TEAM</h4>
 
 * [Nahuel Cruz Pardo Lesa](https://github.com/NahuelPardo89)
 * [Catriel Ignacio Pardo Lesa](https://github.com/cartup90)
@@ -30,6 +20,9 @@
 
 El sistema PassKeeper es una herramienta diseñada para la creación, almacenamiento y gestión de contraseñas seguras. Esta aplicación proporciona a los usuarios una interfaz intuitiva y amigable que les permite almacenar, organizar y acceder de manera conveniente a sus credenciales de inicio de sesión.
 
+Hemos implementado técnicas criptográficas para generar "salt," hashear contraseñas, cifrar y descifrar datos, y generar contraseñas seguras. Estas medidas son esenciales en aplicaciones que manejan información sensible, como contraseñas y datos privados. También hemos incorporado la opción de inicio de sesión mediante biometría de huella digital en dispositivos que admiten esta funcionalidad.
+
+
 # Tecnologías Utilizadas
 
 La aplicación móvil PassKeeper se desarrolló utilizando las siguientes tecnologías:
@@ -37,6 +30,8 @@ La aplicación móvil PassKeeper se desarrolló utilizando las siguientes tecnol
 - Lenguaje de programación principal: Java
 - Entorno de desarrollo integrado (IDE): Android Studio
 - Base de datos: SQLite
+
+  
 
 La aplicacion Web se desarrolló con las tecnologías:
 
@@ -47,11 +42,10 @@ Stack DAM (Django-Angular-MySQL)
 - Angular
 - MySQL
 
-Además, hemos implementado técnicas criptográficas para generar "salt," hashear contraseñas, cifrar y descifrar datos, y generar contraseñas seguras. Estas medidas son esenciales en aplicaciones que manejan información sensible, como contraseñas y datos privados. También hemos incorporado la opción de inicio de sesión mediante biometría de huella digital en dispositivos que admiten esta funcionalidad.
 
 <p align="center">
-  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/4bfbeb8c-d269-45f5-9508-65e377cae729" style="width: 100">
-  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/78bbda29-e4ea-4049-a935-deef5c27b772" style="width: 150">
+  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/4bfbeb8c-d269-45f5-9508-65e377cae729" style="width: 100" height="400">
+  <img src="https://github.com/soleforna/integrador_ISP3/assets/85143329/78bbda29-e4ea-4049-a935-deef5c27b772" style="width: 100" height="400">
 </p>
 
 ---
